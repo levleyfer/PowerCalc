@@ -1,0 +1,1395 @@
+/* ===================================================================
+   POWER-CALC ECO FINAL SYSTEM — V14
+   Single clean Eco-Futurism skin.
+   Use this file instead of V8/V9/V10/V11/V12/V13.
+
+   Import order:
+   00-base.css
+   ...
+   13-mobile-responsive.css
+   15-eco-final-system.css
+   =================================================================== */
+
+/* =========================================================
+   01. DESIGN TOKENS
+   ========================================================= */
+
+:root {
+  /* Light mode */
+  --eco-bg-1: #f3fcff;
+  --eco-bg-2: #c8effa;
+  --eco-bg-3: #eefbf3;
+
+  --eco-text: #06242a;
+  --eco-text-2: #0c323a;
+  --eco-text-3: #173f47;
+  --eco-muted: #315e67;
+  --eco-muted-2: #58737a;
+
+  --eco-green: #64df83;
+  --eco-green-strong: #1f9d4f;
+  --eco-mint: #4fd6c1;
+  --eco-blue: #48c6ee;
+
+  --eco-card: rgba(255, 255, 255, 0.88);
+  --eco-card-2: rgba(255, 255, 255, 0.72);
+  --eco-inner: rgba(255, 255, 255, 0.94);
+
+  --eco-border: rgba(10, 70, 78, 0.18);
+  --eco-border-strong: rgba(10, 70, 78, 0.26);
+
+  --eco-shadow:
+    0 24px 68px rgba(15, 92, 105, 0.14), 0 8px 22px rgba(15, 92, 105, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.92);
+
+  --eco-shadow-soft:
+    0 12px 28px rgba(15, 92, 105, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.92);
+
+  --eco-radius-xl: 36px;
+  --eco-radius-lg: 28px;
+  --eco-radius-md: 22px;
+  --eco-radius-sm: 16px;
+
+  /* Dark mode */
+  --dark-bg-1: #04110f;
+  --dark-bg-2: #061b18;
+  --dark-bg-3: #081c24;
+
+  --dark-text: #eefdf4;
+  --dark-text-2: #d6f5e5;
+  --dark-muted: #b9e9d6;
+  --dark-muted-2: #9fc9bc;
+
+  --dark-card: rgba(12, 37, 33, 0.94);
+  --dark-card-2: rgba(7, 30, 34, 0.9);
+  --dark-inner: rgba(18, 58, 52, 0.92);
+
+  --dark-border: rgba(142, 240, 174, 0.22);
+  --dark-border-soft: rgba(196, 255, 216, 0.14);
+
+  --button-text-on-green: #04110f;
+}
+
+/* =========================================================
+   02. GLOBAL CANVAS
+   ========================================================= */
+
+html,
+body,
+#root {
+  background: var(--eco-bg-2) !important;
+}
+
+body {
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Arial,
+    sans-serif !important;
+}
+
+.app {
+  color: var(--eco-text) !important;
+  overflow-x: clip;
+  isolation: isolate;
+}
+
+.app::before,
+.app::after {
+  content: "";
+  position: fixed;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.app::before {
+  width: 52vw;
+  height: 52vw;
+  min-width: 520px;
+  min-height: 520px;
+  left: -15vw;
+  top: -18vw;
+  opacity: 0.54;
+  filter: blur(4px);
+  background:
+    radial-gradient(
+      circle at 38% 30%,
+      rgba(255, 255, 255, 0.72),
+      transparent 34%
+    ),
+    radial-gradient(
+      circle at 58% 52%,
+      rgba(86, 217, 127, 0.17),
+      transparent 58%
+    );
+}
+
+.app::after {
+  right: -80px;
+  top: 120px;
+  width: 360px;
+  height: 620px;
+  border-radius: 72px;
+  opacity: 0.26;
+  transform: rotate(5deg);
+  background:
+    linear-gradient(
+      155deg,
+      rgba(255, 255, 255, 0.52),
+      rgba(255, 255, 255, 0.12)
+    ),
+    radial-gradient(circle at 72% 18%, rgba(71, 189, 99, 0.18), transparent 46%);
+  border: 1px solid rgba(255, 255, 255, 0.58);
+  box-shadow: 0 36px 100px rgba(47, 139, 150, 0.16);
+}
+
+.shell,
+.pageBody,
+.shellHeader,
+.dashboardPage,
+.featureBody {
+  position: relative;
+  z-index: 1;
+}
+
+.shell {
+  max-width: 1400px !important;
+  width: min(1400px, calc(100vw - 52px)) !important;
+}
+
+/* =========================================================
+   03. DARK MODE CANVAS
+   ========================================================= */
+
+.app.ui-dark::after {
+  opacity: 0.2 !important;
+  background:
+    linear-gradient(
+      155deg,
+      rgba(126, 240, 170, 0.1),
+      rgba(255, 255, 255, 0.03)
+    ),
+    radial-gradient(
+      circle at 72% 18%,
+      rgba(99, 223, 131, 0.18),
+      transparent 46%
+    ) !important;
+  border-color: rgba(196, 255, 216, 0.1) !important;
+}
+
+/* =========================================================
+   04. TYPOGRAPHY
+   ========================================================= */
+
+.homeTitle,
+.featureTitle,
+.historyPageTitle,
+.title,
+.sideHeading,
+.sectionHeader h2,
+.authTitle,
+.historyTitle,
+.sliderFieldName,
+.stackLabel,
+.stepperName,
+.fieldLabel,
+.formLabel,
+.authLabel,
+.tipTitle,
+.breakdownTop strong,
+.roomTableRow strong,
+.roomTableRow b,
+.detailRow b,
+.meterVal,
+.resultValue,
+.resultValue.gold,
+.resultValue.coral,
+.sliderFieldValue,
+.valueBox,
+.input,
+.stackInput,
+.authInput,
+select.input,
+.tab-btn,
+.brandText {
+  color: var(--eco-text) !important;
+  text-shadow: none !important;
+  opacity: 1 !important;
+}
+
+.homeTitle,
+.featureTitle,
+.historyPageTitle,
+.title {
+  font-weight: 980 !important;
+  letter-spacing: -0.065em !important;
+}
+
+.homeTitle {
+  font-size: clamp(50px, 5.8vw, 84px) !important;
+  line-height: 0.94 !important;
+}
+
+.featureTitle {
+  font-size: clamp(26px, 2.2vw, 34px) !important;
+}
+
+.historyPageTitle,
+.title {
+  font-size: clamp(24px, 2vw, 32px) !important;
+}
+
+.sideHeading,
+.sectionHeader h2 {
+  font-size: clamp(19px, 1.35vw, 24px) !important;
+  font-weight: 950 !important;
+}
+
+.homeSubtitle,
+.authSubtitle,
+.fieldNote,
+.note,
+.dashboardNote,
+.tipBody,
+.sliderFieldDesc,
+.sliderFieldRange,
+.meterName,
+.resultLabel,
+.resultUnit,
+.detailRow span,
+.historySummary,
+.breakdownRow small,
+.roomTableHead,
+.eyebrow,
+.small,
+.saveHint,
+.authLegal,
+.stepperDesc {
+  color: var(--eco-muted) !important;
+  opacity: 1 !important;
+  font-weight: 760 !important;
+}
+
+.eyebrow {
+  color: var(--eco-green-strong) !important;
+  font-weight: 950 !important;
+  letter-spacing: 0.18em !important;
+  text-transform: uppercase;
+}
+
+label,
+label span,
+.switchLine,
+.switchLine *,
+.lightingEnableLine,
+.lightingEnableLine *,
+.toggleRow,
+.toggleRow *,
+.accordionTitle,
+.accordionHeader,
+.accordionHeader *,
+.accordion button,
+.accordion button *,
+details summary,
+summary,
+summary * {
+  color: var(--eco-text) !important;
+  opacity: 1 !important;
+  font-weight: 900 !important;
+}
+
+/* =========================================================
+   05. HEADER
+   ========================================================= */
+
+.shellHeader {
+  top: 18px !important;
+  margin: 18px 0 34px !important;
+  padding: 14px 18px !important;
+  border-radius: 36px !important;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.88),
+    rgba(255, 255, 255, 0.68)
+  ) !important;
+  border: 1px solid var(--eco-border) !important;
+  box-shadow: var(--eco-shadow) !important;
+  border-bottom: 1px solid var(--eco-border) !important;
+  backdrop-filter: blur(16px) saturate(125%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(125%) !important;
+}
+
+.brand {
+  gap: 14px !important;
+}
+
+.logo {
+  width: 58px !important;
+  height: 58px !important;
+  border-radius: 21px !important;
+  color: var(--eco-green-strong) !important;
+  background:
+    radial-gradient(
+      circle at 34% 24%,
+      #ffffff 0%,
+      rgba(255, 255, 255, 0.74) 34%,
+      transparent 72%
+    ),
+    linear-gradient(145deg, #ecfff4 0%, #c8f8da 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.92) !important;
+  box-shadow:
+    0 16px 34px rgba(55, 179, 96, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95) !important;
+}
+
+.logoMain {
+  font-size: 22px !important;
+}
+
+.brandText {
+  font-size: 23px !important;
+  font-weight: 980 !important;
+  color: var(--eco-text) !important;
+  letter-spacing: -0.05em !important;
+}
+
+.brandText::first-letter,
+.homeTitle::first-letter,
+.featureTitle::first-letter {
+  color: var(--eco-green-strong) !important;
+}
+
+.navigation-tabs,
+.headerSegment,
+.accountButton {
+  background: rgba(255, 255, 255, 0.86) !important;
+  border: 1px solid rgba(10, 70, 78, 0.14) !important;
+  box-shadow:
+    0 10px 26px rgba(15, 92, 105, 0.07),
+    inset 0 1px 0 rgba(255, 255, 255, 0.86) !important;
+}
+
+.navigation-tabs {
+  gap: 6px !important;
+  padding: 7px !important;
+  border-radius: 999px !important;
+}
+
+.tab-btn {
+  min-height: 48px !important;
+  border-radius: 999px !important;
+  color: var(--eco-text-3) !important;
+  font-weight: 950 !important;
+  padding: 12px 20px !important;
+}
+
+.tab-btn:hover,
+.langMini:hover,
+.themeMini:hover {
+  color: var(--eco-text) !important;
+  background: rgba(231, 249, 241, 0.95) !important;
+}
+
+.langMini,
+.themeMini,
+.accountButton {
+  color: var(--eco-text-3) !important;
+  font-weight: 950 !important;
+}
+
+.accountButton {
+  width: 50px !important;
+  height: 50px !important;
+  border-radius: 19px !important;
+}
+
+/* =========================================================
+   06. GREEN ACTIVE ELEMENTS
+   IMPORTANT: black/dark text on green, not white.
+   ========================================================= */
+
+.tab-btn.active,
+.langMini.active,
+.themeMini.active,
+.chip.active,
+.tabMini.active,
+.saveButton,
+.ctaButton,
+.snapshotButton,
+.btn,
+.tipButton,
+.historyFilters .chip.active {
+  color: var(--button-text-on-green) !important;
+  background: linear-gradient(
+    135deg,
+    #64df83 0%,
+    #4fd6c1 58%,
+    #48c6ee 100%
+  ) !important;
+  border: 1px solid rgba(8, 40, 47, 0.06) !important;
+  box-shadow:
+    0 16px 34px rgba(31, 157, 79, 0.26),
+    inset 0 1px 0 rgba(255, 255, 255, 0.34) !important;
+  text-shadow: none !important;
+  font-weight: 980 !important;
+}
+
+.tab-btn.active *,
+.langMini.active *,
+.themeMini.active *,
+.chip.active *,
+.tabMini.active *,
+.saveButton *,
+.ctaButton *,
+.snapshotButton *,
+.btn *,
+.tipButton *,
+.historyFilters .chip.active * {
+  color: var(--button-text-on-green) !important;
+  text-shadow: none !important;
+}
+
+.saveButton,
+.ctaButton,
+.snapshotButton {
+  min-height: 55px !important;
+  border-radius: 999px !important;
+  padding: 14px 22px !important;
+}
+
+.saveButton:hover,
+.ctaButton:hover,
+.snapshotButton:hover,
+.btn:hover,
+.tipButton:hover {
+  transform: translateY(-2px) scale(1.005);
+  box-shadow:
+    0 22px 44px rgba(31, 157, 79, 0.32),
+    inset 0 1px 0 rgba(255, 255, 255, 0.42) !important;
+}
+
+/* =========================================================
+   07. CARDS
+   ========================================================= */
+
+.panelCard,
+.card,
+.historyItem,
+.modalCard,
+.featureCard,
+.historyPageCard,
+.resultPanel,
+.detailPanel,
+.tipsCard,
+.lightingRoomCard,
+.dashboardBreakdown,
+.roomOverviewCard,
+.optimizedPanel,
+.issuePanel,
+.accordion,
+.efficiencyBadge,
+.authModalCard,
+.homeHero {
+  background: linear-gradient(
+    145deg,
+    var(--eco-card),
+    var(--eco-card-2)
+  ) !important;
+  border: 1px solid var(--eco-border) !important;
+  border-radius: var(--eco-radius-xl) !important;
+  box-shadow: var(--eco-shadow) !important;
+  color: var(--eco-text) !important;
+  backdrop-filter: blur(16px) saturate(125%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(125%) !important;
+}
+
+.panelCard::before,
+.card::before,
+.modalCard::before,
+.resultPanel::before {
+  opacity: 0.55 !important;
+  background:
+    linear-gradient(125deg, rgba(255, 255, 255, 0.56), transparent 32%),
+    radial-gradient(circle at 92% 7%, rgba(76, 197, 239, 0.12), transparent 36%) !important;
+}
+
+.featureCard,
+.historyPageCard {
+  padding: 32px !important;
+}
+
+.homeHero {
+  min-height: 270px !important;
+  padding: 46px 48px !important;
+  border-radius: 40px !important;
+  background:
+    radial-gradient(
+      520px 260px at 78% 18%,
+      rgba(72, 194, 104, 0.18),
+      transparent 64%
+    ),
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.84),
+      rgba(255, 255, 255, 0.62)
+    ) !important;
+}
+
+.homeHero::before {
+  content: "";
+  position: absolute;
+  inset: 18px;
+  border-radius: 32px;
+  pointer-events: none;
+  opacity: 0.45;
+  background:
+    linear-gradient(115deg, rgba(255, 255, 255, 0.34), transparent 38%),
+    radial-gradient(
+      280px 170px at 84% 64%,
+      rgba(71, 189, 99, 0.12),
+      transparent 70%
+    );
+}
+
+.homeHero::after {
+  content: "🌿";
+  position: absolute;
+  right: 34px;
+  bottom: 22px;
+  font-size: 104px;
+  opacity: 0.08;
+  pointer-events: none;
+}
+
+[dir="rtl"] .homeHero::after {
+  right: auto;
+  left: 34px;
+}
+
+.homeTotalPanel:hover,
+.dashboardBreakdown:hover,
+.optimizedPanel:hover,
+.issuePanel:hover,
+.featureCard:hover,
+.resultPanel:hover {
+  transform: translateY(-2px);
+  border-color: var(--eco-border-strong) !important;
+}
+
+/* =========================================================
+   08. INNER CARDS / ROWS
+   ========================================================= */
+
+.meter,
+.detailRow,
+.tipRow,
+.roomTableRow,
+.historyStats,
+.authInputWrap,
+.weatherBox,
+.envExample,
+.saveHint,
+.issueBlock,
+.compareNumbers .meter,
+.breakdownBar {
+  background: var(--eco-inner) !important;
+  border: 1px solid var(--eco-border) !important;
+  border-radius: 24px !important;
+  box-shadow: var(--eco-shadow-soft) !important;
+  color: var(--eco-text) !important;
+}
+
+.meter {
+  min-height: 104px !important;
+}
+
+.meterName,
+.resultLabel,
+.resultUnit,
+.detailRow span,
+.breakdownRow small {
+  color: var(--eco-muted) !important;
+  font-weight: 820 !important;
+}
+
+.meterVal,
+.detailRow b {
+  color: var(--eco-text) !important;
+  font-weight: 980 !important;
+}
+
+/* =========================================================
+   09. RESULT PANELS
+   ========================================================= */
+
+.resultPanel,
+.resultPanel.cool,
+.resultPanel.warm,
+.resultPanel.boilerWarm {
+  background:
+    radial-gradient(
+      440px 240px at 88% 6%,
+      rgba(42, 171, 207, 0.16),
+      transparent 58%
+    ),
+    radial-gradient(
+      420px 280px at 8% 92%,
+      rgba(39, 155, 78, 0.16),
+      transparent 62%
+    ),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.7)) !important;
+  border-color: var(--eco-border) !important;
+}
+
+.resultValue {
+  color: var(--eco-text) !important;
+  font-size: clamp(3.5rem, 5.4vw, 5.5rem) !important;
+  font-weight: 980 !important;
+  letter-spacing: -0.075em !important;
+}
+
+/* =========================================================
+   10. INPUTS
+   ========================================================= */
+
+.input,
+.valueBox,
+select.input,
+.stackInput,
+.authInput,
+.historySearch,
+.historySearch input,
+input,
+select,
+textarea {
+  color: var(--eco-text) !important;
+  background: #ffffff !important;
+  border: 1px solid rgba(10, 70, 78, 0.22) !important;
+  border-radius: 19px !important;
+  box-shadow:
+    0 6px 16px rgba(15, 92, 105, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 1) !important;
+  font-weight: 880 !important;
+}
+
+.input,
+.valueBox,
+select.input,
+.stackInput,
+.authInput {
+  height: 55px !important;
+}
+
+.input::placeholder,
+.valueBox::placeholder,
+.stackInput::placeholder,
+.authInput::placeholder,
+textarea::placeholder,
+.historySearch input::placeholder {
+  color: var(--eco-muted-2) !important;
+  opacity: 1 !important;
+}
+
+.input:focus,
+.valueBox:focus,
+select.input:focus,
+.stackInput:focus,
+.authInput:focus,
+.authInputWrap:focus-within {
+  outline: none !important;
+  border-color: rgba(31, 157, 79, 0.62) !important;
+  box-shadow:
+    0 0 0 4px rgba(31, 157, 79, 0.16),
+    0 8px 18px rgba(15, 92, 105, 0.08) !important;
+}
+
+select.input option,
+.valueBox option {
+  background: #ffffff !important;
+  color: var(--eco-text) !important;
+}
+
+input[type="checkbox"] {
+  accent-color: var(--eco-green-strong) !important;
+}
+
+/* =========================================================
+   11. SLIDERS / PROGRESS BARS
+   ========================================================= */
+
+.sliderInput {
+  height: 13px !important;
+  border-radius: 999px !important;
+  background: linear-gradient(
+    90deg,
+    #249b4f 0%,
+    #43c66f 48%,
+    #28a9ca 100%
+  ) !important;
+  border: 1px solid rgba(10, 70, 78, 0.14) !important;
+  box-shadow:
+    inset 0 1px 4px rgba(8, 40, 47, 0.16),
+    0 5px 12px rgba(31, 157, 79, 0.1) !important;
+}
+
+.sliderInput::-webkit-slider-thumb {
+  appearance: none;
+  width: 27px !important;
+  height: 27px !important;
+  border-radius: 999px !important;
+  background: #ffffff !important;
+  border: 6px solid var(--eco-green-strong) !important;
+  box-shadow:
+    0 9px 18px rgba(31, 157, 79, 0.26),
+    0 0 0 1px rgba(8, 40, 47, 0.08) !important;
+}
+
+.sliderInput::-moz-range-thumb {
+  width: 27px !important;
+  height: 27px !important;
+  border-radius: 999px !important;
+  background: #ffffff !important;
+  border: 6px solid var(--eco-green-strong) !important;
+  box-shadow:
+    0 9px 18px rgba(31, 157, 79, 0.26),
+    0 0 0 1px rgba(8, 40, 47, 0.08) !important;
+}
+
+.breakdownBar {
+  height: 14px !important;
+  background: #f7fbfb !important;
+  border: 1px solid rgba(10, 70, 78, 0.18) !important;
+  box-shadow:
+    inset 0 1px 3px rgba(8, 40, 47, 0.1),
+    0 5px 12px rgba(10, 70, 78, 0.05) !important;
+}
+
+.breakdownBar span {
+  background: linear-gradient(
+    90deg,
+    var(--eco-green-strong) 0%,
+    #35bd68 48%,
+    #1aa6c4 100%
+  ) !important;
+  box-shadow: 0 3px 10px rgba(31, 157, 79, 0.22) !important;
+}
+
+/* =========================================================
+   12. DASHBOARD / INSIGHTS
+   ========================================================= */
+
+.dashboardBreakdown {
+  padding: 30px 32px !important;
+}
+
+.breakdownList {
+  gap: 24px !important;
+}
+
+.breakdownRow {
+  gap: 9px !important;
+}
+
+.breakdownTop span,
+.breakdownTop strong {
+  color: var(--eco-text) !important;
+  font-weight: 950 !important;
+  opacity: 1 !important;
+}
+
+.breakdownRow small {
+  display: block !important;
+  margin-top: 2px !important;
+  line-height: 1.35 !important;
+}
+
+.issueBlock {
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.96),
+    rgba(247, 253, 250, 0.9)
+  ) !important;
+  border: 1px solid rgba(10, 70, 78, 0.2) !important;
+}
+
+.issueBlock strong,
+.issueBlock .eyebrow,
+.issueBlock h3,
+.issuePanel strong,
+.issuePanel h3,
+.issuePanel .eyebrow {
+  color: var(--eco-green-strong) !important;
+  font-weight: 980 !important;
+  letter-spacing: 0.08em !important;
+}
+
+.issueBlock p,
+.issuePanel p,
+.issuePanel .tipBody,
+.issueBlock .tipBody {
+  color: var(--eco-text-3) !important;
+  font-weight: 820 !important;
+  line-height: 1.62 !important;
+}
+
+.efficiencyBadge span {
+  color: var(--eco-muted) !important;
+  font-weight: 950 !important;
+}
+
+.efficiencyBadge strong {
+  color: var(--eco-text) !important;
+  font-weight: 980 !important;
+}
+
+/* =========================================================
+   13. HISTORY
+   ========================================================= */
+
+.historyPageCard,
+.historyItem {
+  color: var(--eco-text) !important;
+}
+
+.historyItemTop strong,
+.historyItem > strong,
+.historyTitle {
+  color: var(--eco-text) !important;
+  font-weight: 980 !important;
+}
+
+.historySummary,
+.historyItem p,
+.historyItem span:not(.historyTypeBadge) {
+  color: var(--eco-text-3) !important;
+  font-weight: 800 !important;
+}
+
+.historyTypeBadge {
+  color: var(--button-text-on-green) !important;
+  background: linear-gradient(135deg, #64df83, #4fd6c1) !important;
+  border: 0 !important;
+  font-weight: 950 !important;
+}
+
+/* =========================================================
+   14. DARK MODE — HEADER
+   ========================================================= */
+
+.app.ui-dark .shellHeader {
+  background: linear-gradient(
+    135deg,
+    rgba(12, 37, 33, 0.92),
+    rgba(8, 29, 34, 0.82)
+  ) !important;
+  border: 1px solid var(--dark-border) !important;
+  box-shadow:
+    0 24px 70px rgba(0, 0, 0, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+}
+
+.app.ui-dark .navigation-tabs,
+.app.ui-dark .headerSegment,
+.app.ui-dark .accountButton {
+  background: rgba(255, 255, 255, 0.06) !important;
+  border: 1px solid var(--dark-border-soft) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06) !important;
+}
+
+.app.ui-dark .logo {
+  background:
+    radial-gradient(
+      circle at 34% 24%,
+      rgba(255, 255, 255, 0.2),
+      transparent 52%
+    ),
+    linear-gradient(145deg, rgba(21, 73, 56, 0.95), rgba(10, 45, 48, 0.92)) !important;
+  border: 1px solid var(--dark-border) !important;
+  color: var(--eco-green) !important;
+}
+
+.app.ui-dark .brandText,
+.app.ui-dark .tab-btn,
+.app.ui-dark .langMini,
+.app.ui-dark .themeMini,
+.app.ui-dark .accountButton {
+  color: var(--dark-text-2) !important;
+}
+
+.app.ui-dark .tab-btn:hover,
+.app.ui-dark .langMini:hover,
+.app.ui-dark .themeMini:hover {
+  color: #ffffff !important;
+  background: rgba(100, 223, 131, 0.1) !important;
+}
+
+/* =========================================================
+   15. DARK MODE — TYPOGRAPHY
+   ========================================================= */
+
+.app.ui-dark .homeTitle,
+.app.ui-dark .featureTitle,
+.app.ui-dark .historyPageTitle,
+.app.ui-dark .title,
+.app.ui-dark .sideHeading,
+.app.ui-dark .sectionHeader h2,
+.app.ui-dark .authTitle,
+.app.ui-dark .historyTitle,
+.app.ui-dark .sliderFieldName,
+.app.ui-dark .stackLabel,
+.app.ui-dark .stepperName,
+.app.ui-dark .fieldLabel,
+.app.ui-dark .formLabel,
+.app.ui-dark .authLabel,
+.app.ui-dark .tipTitle,
+.app.ui-dark .breakdownTop span,
+.app.ui-dark .breakdownTop strong,
+.app.ui-dark .roomTableRow strong,
+.app.ui-dark .roomTableRow b,
+.app.ui-dark .detailRow b,
+.app.ui-dark .meterVal,
+.app.ui-dark .resultValue,
+.app.ui-dark .resultValue.gold,
+.app.ui-dark .resultValue.coral,
+.app.ui-dark .sliderFieldValue,
+.app.ui-dark .valueBox,
+.app.ui-dark .accordionTitle,
+.app.ui-dark .accordionHeader,
+.app.ui-dark .accordionHeader *,
+.app.ui-dark .accordion button,
+.app.ui-dark .accordion button *,
+.app.ui-dark summary,
+.app.ui-dark summary *,
+.app.ui-dark label,
+.app.ui-dark label span,
+.app.ui-dark .switchLine,
+.app.ui-dark .switchLine *,
+.app.ui-dark .lightingEnableLine,
+.app.ui-dark .lightingEnableLine * {
+  color: var(--dark-text) !important;
+  opacity: 1 !important;
+  text-shadow: none !important;
+}
+
+.app.ui-dark .homeSubtitle,
+.app.ui-dark .authSubtitle,
+.app.ui-dark .fieldNote,
+.app.ui-dark .note,
+.app.ui-dark .dashboardNote,
+.app.ui-dark .tipBody,
+.app.ui-dark .sliderFieldDesc,
+.app.ui-dark .sliderFieldRange,
+.app.ui-dark .meterName,
+.app.ui-dark .resultLabel,
+.app.ui-dark .resultUnit,
+.app.ui-dark .detailRow span,
+.app.ui-dark .historySummary,
+.app.ui-dark .breakdownRow small,
+.app.ui-dark .roomTableHead,
+.app.ui-dark .small,
+.app.ui-dark .authLegal,
+.app.ui-dark .stepperDesc {
+  color: var(--dark-muted) !important;
+  opacity: 1 !important;
+  font-weight: 800 !important;
+}
+
+/* =========================================================
+   16. DARK MODE — CARDS
+   ========================================================= */
+
+.app.ui-dark .panelCard,
+.app.ui-dark .card,
+.app.ui-dark .historyItem,
+.app.ui-dark .modalCard,
+.app.ui-dark .featureCard,
+.app.ui-dark .historyPageCard,
+.app.ui-dark .resultPanel,
+.app.ui-dark .detailPanel,
+.app.ui-dark .tipsCard,
+.app.ui-dark .lightingRoomCard,
+.app.ui-dark .dashboardBreakdown,
+.app.ui-dark .roomOverviewCard,
+.app.ui-dark .optimizedPanel,
+.app.ui-dark .issuePanel,
+.app.ui-dark .accordion,
+.app.ui-dark .efficiencyBadge,
+.app.ui-dark .authModalCard,
+.app.ui-dark .homeHero {
+  color: var(--dark-text) !important;
+  background:
+    radial-gradient(
+      520px 260px at 88% 6%,
+      rgba(100, 223, 131, 0.09),
+      transparent 62%
+    ),
+    linear-gradient(145deg, var(--dark-card), var(--dark-card-2)) !important;
+  border: 1px solid var(--dark-border) !important;
+  box-shadow:
+    0 28px 80px rgba(0, 0, 0, 0.34),
+    inset 0 1px 0 rgba(255, 255, 255, 0.07) !important;
+  backdrop-filter: blur(18px) saturate(130%) !important;
+  -webkit-backdrop-filter: blur(18px) saturate(130%) !important;
+}
+
+.app.ui-dark .meter,
+.app.ui-dark .detailRow,
+.app.ui-dark .tipRow,
+.app.ui-dark .roomTableRow,
+.app.ui-dark .historyStats,
+.app.ui-dark .authInputWrap,
+.app.ui-dark .weatherBox,
+.app.ui-dark .envExample,
+.app.ui-dark .saveHint,
+.app.ui-dark .issueBlock,
+.app.ui-dark .compareNumbers .meter {
+  color: var(--dark-text) !important;
+  background: var(--dark-inner) !important;
+  border: 1px solid var(--dark-border-soft) !important;
+  box-shadow:
+    0 12px 28px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05) !important;
+}
+
+.app.ui-dark .issueBlock p,
+.app.ui-dark .issueBlock span,
+.app.ui-dark .issuePanel p,
+.app.ui-dark .issuePanel .tipBody,
+.app.ui-dark .issueBlock .tipBody {
+  color: var(--dark-text-2) !important;
+  font-weight: 840 !important;
+}
+
+.app.ui-dark .issueBlock strong,
+.app.ui-dark .issueBlock .eyebrow,
+.app.ui-dark .issueBlock h3,
+.app.ui-dark .eyebrow {
+  color: var(--eco-green) !important;
+  font-weight: 980 !important;
+}
+
+.app.ui-dark .efficiencyBadge span {
+  color: var(--dark-muted) !important;
+  font-weight: 950 !important;
+}
+
+.app.ui-dark .efficiencyBadge strong {
+  color: var(--dark-text) !important;
+  font-weight: 980 !important;
+}
+
+/* =========================================================
+   17. DARK MODE — INPUTS / BUTTONS / BARS
+   ========================================================= */
+
+.app.ui-dark .input,
+.app.ui-dark .valueBox,
+.app.ui-dark select.input,
+.app.ui-dark .stackInput,
+.app.ui-dark .authInput,
+.app.ui-dark .historySearch,
+.app.ui-dark .historySearch input,
+.app.ui-dark input,
+.app.ui-dark select,
+.app.ui-dark textarea {
+  color: var(--dark-text) !important;
+  background: rgba(5, 20, 21, 0.88) !important;
+  border: 1px solid var(--dark-border-soft) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 10px 22px rgba(0, 0, 0, 0.18) !important;
+}
+
+.app.ui-dark .input::placeholder,
+.app.ui-dark .valueBox::placeholder,
+.app.ui-dark .stackInput::placeholder,
+.app.ui-dark .authInput::placeholder,
+.app.ui-dark textarea::placeholder,
+.app.ui-dark .historySearch input::placeholder {
+  color: var(--dark-muted-2) !important;
+  opacity: 1 !important;
+}
+
+.app.ui-dark select.input option,
+.app.ui-dark .valueBox option {
+  background: #071c1a !important;
+  color: var(--dark-text) !important;
+}
+
+.app.ui-dark .tab-btn.active,
+.app.ui-dark .langMini.active,
+.app.ui-dark .themeMini.active,
+.app.ui-dark .chip.active,
+.app.ui-dark .tabMini.active,
+.app.ui-dark .saveButton,
+.app.ui-dark .ctaButton,
+.app.ui-dark .snapshotButton,
+.app.ui-dark .btn,
+.app.ui-dark .tipButton,
+.app.ui-dark .historyFilters .chip.active {
+  color: var(--button-text-on-green) !important;
+  background: linear-gradient(
+    135deg,
+    #64df83 0%,
+    #4fd6c1 58%,
+    #48c6ee 100%
+  ) !important;
+  text-shadow: none !important;
+  font-weight: 980 !important;
+}
+
+.app.ui-dark .tab-btn.active *,
+.app.ui-dark .langMini.active *,
+.app.ui-dark .themeMini.active *,
+.app.ui-dark .chip.active *,
+.app.ui-dark .tabMini.active *,
+.app.ui-dark .saveButton *,
+.app.ui-dark .ctaButton *,
+.app.ui-dark .snapshotButton *,
+.app.ui-dark .btn *,
+.app.ui-dark .tipButton *,
+.app.ui-dark .historyFilters .chip.active * {
+  color: var(--button-text-on-green) !important;
+}
+
+.app.ui-dark .ghostButton,
+.app.ui-dark .pdfSecondaryButton,
+.app.ui-dark .iconBtn,
+.app.ui-dark .btnGhost,
+.app.ui-dark .chip,
+.app.ui-dark .tabMini,
+.app.ui-dark .lightingRemoveBtn {
+  color: var(--dark-text) !important;
+  background: rgba(255, 255, 255, 0.07) !important;
+  border: 1px solid var(--dark-border-soft) !important;
+}
+
+.app.ui-dark .breakdownBar {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid var(--dark-border-soft) !important;
+}
+
+.app.ui-dark .breakdownBar span,
+.app.ui-dark .sliderInput {
+  background: linear-gradient(
+    90deg,
+    #64df83 0%,
+    #4fd6c1 55%,
+    #48c6ee 100%
+  ) !important;
+}
+
+.app.ui-dark .sliderInput::-webkit-slider-thumb {
+  background: #06201b !important;
+  border: 6px solid #64df83 !important;
+}
+
+.app.ui-dark .sliderInput::-moz-range-thumb {
+  background: #06201b !important;
+  border: 6px solid #64df83 !important;
+}
+
+/* =========================================================
+   18. DARK MODE — HISTORY SPECIFIC
+   ========================================================= */
+
+.app.ui-dark .historyItemTop strong,
+.app.ui-dark .historyItem > strong,
+.app.ui-dark .historyTitle {
+  color: var(--dark-text) !important;
+  font-weight: 980 !important;
+}
+
+.app.ui-dark .historySummary,
+.app.ui-dark .historyItem p,
+.app.ui-dark .historyItem span:not(.historyTypeBadge) {
+  color: var(--dark-text-2) !important;
+  font-weight: 820 !important;
+}
+
+.app.ui-dark .historyTypeBadge {
+  color: var(--button-text-on-green) !important;
+  background: linear-gradient(135deg, #64df83, #4fd6c1) !important;
+  border: 0 !important;
+  font-weight: 950 !important;
+}
+
+/* =========================================================
+   19. RTL / NUMBER SAFETY
+   ========================================================= */
+
+.numberToken,
+.resultValue,
+.meterVal,
+.sliderFieldValue,
+.valueBox,
+.breakdownTop strong,
+.detailRow b,
+.moneyValue,
+.metricValue {
+  direction: ltr;
+  unicode-bidi: isolate;
+  white-space: nowrap;
+}
+
+/* =========================================================
+   20. MOBILE
+   ========================================================= */
+
+@media (max-width: 1080px) {
+  .shell {
+    width: min(100%, calc(100vw - 28px)) !important;
+  }
+
+  .app::after {
+    opacity: 0.18;
+  }
+}
+
+@media (max-width: 760px) {
+  .app {
+    padding: 0 12px 28px !important;
+  }
+
+  .shell {
+    width: 100% !important;
+  }
+
+  .shellHeader {
+    top: 0 !important;
+    margin: 0 0 18px !important;
+    border-radius: 0 0 30px 30px !important;
+    padding: 14px 12px !important;
+  }
+
+  .homeHero,
+  .featureCard,
+  .historyPageCard,
+  .panelCard,
+  .resultPanel,
+  .card,
+  .detailPanel,
+  .tipsCard {
+    padding: 20px 16px !important;
+    border-radius: 28px !important;
+  }
+
+  .homeTitle {
+    font-size: clamp(2.45rem, 12vw, 3.75rem) !important;
+    letter-spacing: -0.075em !important;
+  }
+
+  .featureTitle {
+    font-size: 26px !important;
+  }
+
+  .resultValue {
+    font-size: 3.65rem !important;
+  }
+
+  .meter {
+    min-height: 92px !important;
+  }
+
+  .app::before {
+    min-width: 420px;
+    min-height: 420px;
+  }
+
+  .app::after {
+    display: none;
+  }
+
+  .app.ui-dark .shellHeader {
+    background: rgba(8, 29, 28, 0.96) !important;
+  }
+}
+
+.roomOverviewCard .ghostButton,
+.roomOverviewCard .btnGhost,
+.roomOverviewCard button {
+  color: #06242a !important;
+  background: rgba(255, 255, 255, 0.98) !important;
+  border: 1px solid rgba(10, 70, 78, 0.22) !important;
+  font-weight: 950 !important;
+  box-shadow:
+    0 10px 22px rgba(15, 92, 105, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 1) !important;
+}
+
+.roomOverviewCard .ghostButton:hover,
+.roomOverviewCard .btnGhost:hover,
+.roomOverviewCard button:hover {
+  color: #04110f !important;
+  background: linear-gradient(
+    135deg,
+    #64df83 0%,
+    #4fd6c1 58%,
+    #48c6ee 100%
+  ) !important;
+}
+
+/* Final issue labels color fix */
+.issueBlock .eyebrow,
+.issueBlock > div:first-child,
+.issueBlock > span:first-child,
+.issueBlock > strong:first-child {
+  color: #1f9d4f !important;
+  font-weight: 980 !important;
+}
+
+.issueBlock:nth-child(2) .eyebrow,
+.issueBlock:nth-child(2) > div:first-child,
+.issueBlock:nth-child(2) > span:first-child,
+.issueBlock:nth-child(2) > strong:first-child {
+  color: #19a99a !important;
+}
+
+/* =========================================================
+   21. FINAL LIGHT / DARK BACKGROUND FIXES
+   ========================================================= */
+
+/* Add Room special */
+.app.ui-light .ghostButton:not(.dangerGhost) {
+  color: #2f7d59 !important;
+  font-weight: 700 !important;
+}
+
+/* Light mode wallpaper */
+.app.ui-light {
+  background: url("/icons/eco-cg.jpg") center / cover no-repeat fixed !important;
+}
+
+/* Disable pseudo wallpaper in light mode */
+.app.ui-light::before {
+  display: none !important;
+}
+
+/* Dark mode wallpaper */
+.app.ui-dark {
+  background:
+    linear-gradient(rgba(4, 17, 15, 0.22), rgba(4, 17, 15, 0.46)),
+    url("/icons/eco-bg.jpg") center / 100% auto no-repeat fixed !important;
+  background-color: #04110f !important;
+}
+
+/* Dark mode wallpaper overlay */
+.app.ui-dark::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+
+  background-image: url("/icons/eco-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  opacity: 0.42;
+  filter: saturate(1.25) contrast(1.08);
+}

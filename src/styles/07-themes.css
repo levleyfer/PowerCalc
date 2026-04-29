@@ -1,0 +1,234 @@
+/* ===================================================================
+   LIGHT/DARK THEME RULES
+   =================================================================== */
+
+select.input option,
+.valueBox option {
+  background: #1a244d;
+  color: #eef2ff;
+}
+select.input option:checked,
+select.input option:hover,
+.valueBox option:checked,
+.valueBox option:hover {
+  background: #6f63ff;
+  color: #ffffff;
+}
+
+.app.ui-light {
+  color: #14213d;
+  background:
+    radial-gradient(
+      900px 520px at 0% 95%,
+      rgba(122, 92, 255, 0.1),
+      transparent 58%
+    ),
+    radial-gradient(
+      760px 420px at 100% 0%,
+      rgba(82, 120, 255, 0.08),
+      transparent 50%
+    ),
+    linear-gradient(180deg, #f3f6ff 0%, #eef3ff 44%, #e8eefc 100%);
+}
+
+.app.ui-light .shellHeader {
+  background: linear-gradient(
+    180deg,
+    rgba(243, 246, 255, 0.96),
+    rgba(243, 246, 255, 0.88)
+  );
+  border-bottom-color: rgba(91, 115, 176, 0.14);
+}
+
+.app.ui-light .brandText,
+.app.ui-light .featureTitle,
+.app.ui-light .sideHeading,
+.app.ui-light .sectionHeader h2,
+.app.ui-light .sliderFieldName,
+.app.ui-light .stackLabel,
+.app.ui-light .stepperName,
+.app.ui-light .historyTitle,
+.app.ui-light .resultValue,
+.app.ui-light .meterVal,
+.app.ui-light .detailRow b,
+.app.ui-light .authTitle,
+.app.ui-light .tab-btn,
+.app.ui-light .langMini,
+.app.ui-light .themeMini,
+.app.ui-light .accountButton {
+  color: #172554;
+}
+
+.app.ui-light .tab-btn,
+.app.ui-light .navigation-tabs,
+.app.ui-light .headerSegment,
+.app.ui-light .langMini,
+.app.ui-light .themeMini,
+.app.ui-light .accountButton,
+.app.ui-light .chip,
+.app.ui-light .tabMini,
+.app.ui-light .ghostButton {
+  background: rgba(255, 255, 255, 0.72);
+  border-color: rgba(111, 136, 199, 0.18);
+}
+
+.app.ui-light .tab-btn.active,
+.app.ui-light .langMini.active,
+.app.ui-light .themeMini.active,
+.app.ui-light .chip.active,
+.app.ui-light .tabMini.active {
+  color: #fff;
+  background: linear-gradient(135deg, #7a5fff 0%, #965fff 100%);
+  box-shadow: 0 10px 24px rgba(122, 92, 255, 0.22);
+}
+
+.app.ui-light .panelCard,
+.app.ui-light .card,
+.app.ui-light .historyItem,
+.app.ui-light .modalCard,
+.app.ui-light .featureCard,
+.app.ui-light .historyPageCard,
+.app.ui-light .tipsCard,
+.app.ui-light .detailPanel,
+.app.ui-light .resultPanel,
+.app.ui-light .accordion {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.86),
+    rgba(244, 247, 255, 0.82)
+  );
+  border-color: rgba(118, 141, 199, 0.16);
+  box-shadow: 0 24px 60px rgba(91, 115, 176, 0.14);
+}
+
+.app.ui-light .resultPanel.cool {
+  background:
+    radial-gradient(
+      140% 140% at 100% 0%,
+      rgba(137, 105, 255, 0.18),
+      transparent 45%
+    ),
+    linear-gradient(
+      135deg,
+      rgba(239, 236, 255, 0.95),
+      rgba(227, 235, 255, 0.92)
+    );
+}
+
+.app.ui-light .resultPanel.warm,
+.app.ui-light .resultPanel.boilerWarm {
+  background:
+    radial-gradient(
+      140% 140% at 100% 0%,
+      rgba(255, 166, 99, 0.2),
+      transparent 42%
+    ),
+    linear-gradient(
+      135deg,
+      rgba(255, 243, 233, 0.95),
+      rgba(255, 234, 241, 0.92)
+    );
+}
+
+.app.ui-light .sliderField + .sliderField,
+.app.ui-light .detailRow,
+.app.ui-light .meter,
+.app.ui-light .tipRow,
+.app.ui-light .input,
+.app.ui-light .valueBox,
+.app.ui-light select.input,
+.app.ui-light .authInput,
+.app.ui-light .stackInput {
+  border-color: rgba(118, 141, 199, 0.14);
+}
+
+.app.ui-light .detailRow,
+.app.ui-light .meter,
+.app.ui-light .tipRow,
+.app.ui-light .input,
+.app.ui-light .valueBox,
+.app.ui-light select.input,
+.app.ui-light .authInput,
+.app.ui-light .stackInput,
+.app.ui-light .accordion,
+.app.ui-light .saveHint,
+.app.ui-light .small,
+.app.ui-light .fieldNote,
+.app.ui-light .tipBody,
+.app.ui-light .authSubtitle,
+.app.ui-light .authLegal,
+.app.ui-light .historySummary,
+.app.ui-light .note,
+.app.ui-light .sliderFieldDesc,
+.app.ui-light .sliderFieldRange,
+.app.ui-light .meterName,
+.app.ui-light .resultLabel,
+.app.ui-light .resultUnit {
+  color: #52607f;
+}
+
+.app.ui-light .detailRow,
+.app.ui-light .meter,
+.app.ui-light .tipRow {
+  background: rgba(255, 255, 255, 0.65);
+}
+
+.app.ui-light .sliderInput::-webkit-slider-thumb,
+.app.ui-light .sliderInput::-moz-range-thumb {
+  background: #f6f8ff;
+}
+
+.app.ui-light select.input option,
+.app.ui-light .valueBox option {
+  background: #ffffff;
+  color: #172554;
+}
+.app.ui-light select.input option:checked,
+.app.ui-light select.input option:hover,
+.app.ui-light .valueBox option:checked,
+.app.ui-light .valueBox option:hover {
+  background: #e9eeff;
+  color: #172554;
+}
+
+/* ===== DARK MODE ONLY DROPDOWN FIX ===== */
+
+.app.ui-dark select.input,
+.app.ui-dark .valueBox {
+  background: rgba(17, 24, 39, 0.9);
+  color: #ffffff;
+}
+
+/* options */
+.app.ui-dark select.input option,
+.app.ui-dark .valueBox option {
+  background: #111827;
+  color: #ffffff;
+}
+
+/* selected */
+.app.ui-dark select.input option:checked,
+.app.ui-dark .valueBox option:checked {
+  background: #6366f1;
+  color: #ffffff;
+}
+
+/* hover (works partially depending on browser) */
+.app.ui-dark select.input option:hover,
+.app.ui-dark .valueBox option:hover {
+  background: #2a2f55;
+  color: #ffffff;
+}
+
+.app.ui-dark select:focus {
+  background: #111827;
+  color: #fff;
+}
+
+.weatherControls {
+  align-items: flex-start;
+}
+
+.weatherControls .stackInput {
+  min-width: 260px;
+}

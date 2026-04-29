@@ -1,0 +1,75 @@
+/* ===================================================================
+   HISTORY BASIC STYLES
+   =================================================================== */
+
+.historyPageCard {
+  padding: 26px;
+}
+.historyHead {
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+.historyPageTitle,
+.title {
+  margin: 0;
+  font-size: 22px;
+}
+.historyStats {
+  padding: 10px 14px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.04);
+}
+.historyToolbar {
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+.historySearch {
+  max-width: 320px;
+}
+.historyPageList {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.historyItem {
+  padding: 18px;
+}
+.historyItemTop {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: flex-start;
+}
+.historyTypeBadge {
+  display: inline-flex;
+  margin-top: 8px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(122, 92, 255, 0.14);
+  color: #c9beff;
+  font-size: 11px;
+  font-weight: 700;
+}
+.historyActions {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+.btn {
+  border: 0;
+  border-radius: 14px;
+  padding: 12px 16px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #7a5fff 0%, #965fff 100%);
+  color: #fff;
+  cursor: pointer;
+}
+.btnGhost {
+  background: rgba(255, 255, 255, 0.05);
+}
+.btnDanger {
+  background: rgba(239, 68, 68, 0.16);
+  color: #ffc7c7;
+}

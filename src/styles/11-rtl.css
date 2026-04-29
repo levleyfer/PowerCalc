@@ -1,0 +1,270 @@
+/* ===================================================================
+   RTL + SPACING POLISH
+   =================================================================== */
+
+/* ===== RTL + spacing polish pass ===== */
+* {
+  box-sizing: border-box;
+}
+html,
+body,
+#root {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+.app {
+  overflow-x: hidden;
+}
+.shell {
+  width: min(1260px, 100%);
+}
+.panelCard,
+.card,
+.historyItem,
+.modalCard,
+.featureCard,
+.historyPageCard,
+.resultPanel,
+.detailPanel,
+.tipsCard,
+.lightingRoomCard,
+.meter {
+  min-width: 0;
+}
+
+/* Hebrew screens need logical alignment and safe wrapping. */
+[dir="rtl"] .app {
+  text-align: right;
+}
+[dir="rtl"] .brandText {
+  margin-inline-start: 12px;
+  margin-inline-end: 0;
+}
+[dir="rtl"] .navigation-tabs {
+  direction: rtl;
+}
+[dir="rtl"] .headerActions {
+  direction: rtl;
+}
+[dir="rtl"] .featureHeader.between,
+[dir="rtl"] .historyHead,
+[dir="rtl"] .historyToolbar,
+[dir="rtl"] .homeHero,
+[dir="rtl"] .sliderFieldTop,
+[dir="rtl"] .detailRow,
+[dir="rtl"] .breakdownTop,
+[dir="rtl"] .meterHeader,
+[dir="rtl"] .tipRow,
+[dir="rtl"] .historyItemTop {
+  text-align: right;
+}
+
+/* Keep numbers, prices and English units together so Hebrew/English do not mix visually. */
+.numberToken,
+.resultValue,
+.meterVal,
+.sliderFieldValue,
+.valueBox,
+.breakdownTop strong,
+.roomTableRow span:not(:first-child),
+.roomTableRow b,
+.detailRow b {
+  direction: ltr;
+  unicode-bidi: isolate;
+  white-space: nowrap;
+}
+
+.homeTitle,
+.featureTitle,
+.sideHeading,
+.tipTitle,
+.tipBody,
+.homeSubtitle,
+.detailRow span,
+.detailRow b,
+.meterName,
+.stackLabel,
+.sliderFieldName,
+.sliderFieldDesc,
+.historySummary,
+.historyTitle,
+.roomTableRow,
+.breakdownTop,
+.issueBlock strong,
+.issueBlock p {
+  overflow-wrap: anywhere;
+}
+
+/* Header should never escape on narrow screens. */
+.shellHeader {
+  max-width: 100%;
+}
+.navigation-tabs {
+  max-width: 100%;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+.tab-btn {
+  white-space: nowrap;
+}
+.headerActions {
+  min-width: 0;
+}
+.headerSegment {
+  min-width: 0;
+}
+
+/* Cards and grids: avoid content pushing outside the viewport. */
+.dashboardGrid,
+.dashboardGridWide,
+.homeSummaryGrid,
+.homeInsightGrid,
+.lightingRoomGrid,
+.lightingRoomMeters,
+.advGrid,
+.compareNumbers,
+.miniStats {
+  min-width: 0;
+}
+
+.homeHero {
+  align-items: stretch;
+}
+.heroActionsStack {
+  min-width: 180px;
+}
+.efficiencyBadge {
+  width: 100%;
+}
+
+/* Make tables/card rows behave better with Hebrew and small widths. */
+.roomTableHead,
+.roomTableRow {
+  grid-template-columns:
+    minmax(110px, 1.2fr) minmax(88px, 1fr) minmax(88px, 1fr)
+    minmax(88px, 1fr);
+}
+.roomTableRow > * {
+  min-width: 0;
+}
+.roomTableRow strong:first-child {
+  white-space: normal;
+}
+
+/* Detail rows: keep label and value clean without overflow. */
+.detailRow {
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.detailRow span {
+  min-width: 0;
+}
+.detailRow b {
+  margin-inline-start: auto;
+}
+[dir="rtl"] .detailRow b {
+  margin-inline-start: 0;
+  margin-inline-end: auto;
+}
+
+/* Advanced controls: long Hebrew labels should wrap, value controls stay compact. */
+.stepper,
+.inputRow {
+  min-width: 0;
+  flex-wrap: wrap;
+}
+.stepperLeft {
+  min-width: 0;
+  flex: 1 1 190px;
+}
+.stepperRight {
+  flex: 0 0 auto;
+  max-width: 100%;
+}
+.valueBox {
+  min-width: 92px;
+  max-width: 170px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.stackInput,
+.input,
+.valueBox,
+select.input,
+.authInput {
+  min-width: 0;
+}
+
+/* Inputs with icons/labels in RTL should not look squeezed. */
+.sliderFieldLabelWrap {
+  min-width: 0;
+}
+.sliderFieldLabelWrap > div {
+  min-width: 0;
+}
+.sliderFieldValue {
+  text-align: end;
+}
+
+/* PDF/report tables should not affect the visible app layout. */
+.pdfReportRoot {
+  direction: ltr;
+}
+
+@media (max-width: 860px) {
+  .shellHeader {
+    align-items: stretch;
+  }
+  .brandButton {
+    justify-self: start;
+  }
+  [dir="rtl"] .brandButton {
+    justify-self: end;
+  }
+  .headerActions {
+    width: 100%;
+    justify-content: flex-start;
+  }
+  [dir="rtl"] .headerActions {
+    justify-content: flex-end;
+  }
+}
+
+@media (max-width: 720px) {
+  .homeHero,
+  .homeSummaryGrid,
+  .homeInsightGrid,
+  .dashboardGridWide,
+  .dashboardGrid,
+  .compareNumbers,
+  .miniStats.twoCols,
+  .lightingRoomMeters,
+  .lightingRoomGrid,
+  .advGrid {
+    grid-template-columns: 1fr !important;
+  }
+  .heroActionsStack {
+    min-width: 0;
+    justify-items: stretch;
+  }
+  .stepperRight {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .valueBox {
+    flex: 1;
+    max-width: none;
+  }
+  .roomTableRow {
+    gap: 8px;
+  }
+  .roomTableRow > span,
+  .roomTableRow > b {
+    justify-self: start;
+  }
+  [dir="rtl"] .roomTableRow > span,
+  [dir="rtl"] .roomTableRow > b {
+    justify-self: end;
+  }
+}

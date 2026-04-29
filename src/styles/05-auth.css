@@ -1,0 +1,141 @@
+/* ===================================================================
+   AUTH MODAL
+   =================================================================== */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(2, 6, 23, 0.62);
+  backdrop-filter: blur(10px);
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  z-index: 90;
+}
+.authShell {
+  justify-items: center;
+  gap: 22px;
+  width: min(460px, 100%);
+}
+.authBrandRow {
+  gap: 12px;
+}
+.authModalCard {
+  width: 100%;
+  padding: 28px;
+}
+.authClose {
+  position: absolute;
+  top: 16px;
+  inset-inline-end: 16px;
+}
+.iconBtn {
+  width: 34px;
+  height: 34px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.04);
+  color: #fff;
+  cursor: pointer;
+}
+.authTabsTop {
+  margin-bottom: 18px;
+}
+.authTitle {
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+.authSubtitle {
+  margin-top: 6px;
+  margin-bottom: 18px;
+}
+.authField {
+  display: grid;
+  gap: 8px;
+}
+.authLabel {
+  font-size: 14px;
+  font-weight: 700;
+}
+.authInputWrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-inline-start: 12px;
+  border-radius: 18px;
+  border: 1px solid rgba(147, 168, 216, 0.12);
+  background: rgba(255, 255, 255, 0.03);
+}
+.authInputWrap:focus-within {
+  border-color: rgba(138, 99, 255, 0.36);
+  box-shadow: 0 0 0 4px rgba(122, 92, 255, 0.12);
+}
+.authInputWrap .authInput {
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+.authInputIcon {
+  opacity: 0.7;
+}
+.authMetaRow {
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+.rememberRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--muted);
+  font-size: 14px;
+}
+.linkBtn {
+  border: 0;
+  background: transparent;
+  color: #8a90ff;
+  cursor: pointer;
+  padding: 0;
+}
+.linkBtn.inline {
+  display: inline;
+}
+.authError {
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: rgba(239, 68, 68, 0.12);
+  color: #ffc7c7;
+  font-size: 13px;
+}
+.authFooterLine {
+  text-align: center;
+  color: var(--muted);
+  font-size: 15px;
+}
+.authLegal {
+  text-align: center;
+  color: #66708f;
+  font-size: 13px;
+}
+.authStateBox,
+.setupBox {
+  display: grid;
+  gap: 14px;
+}
+.authEmail {
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+.envExample {
+  margin: 0;
+  white-space: pre-wrap;
+  border-radius: 18px;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  color: #cdd8f5;
+}

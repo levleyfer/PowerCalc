@@ -1,0 +1,689 @@
+/* ===================================================================
+   MOBILE RESPONSIVE FIXES
+   Clean version:
+   - Prevents horizontal overflow
+   - Keeps mobile layout readable
+   - Keeps PDF report export working
+   =================================================================== */
+
+/* ===== GLOBAL OVERFLOW SAFETY ===== */
+
+html,
+body,
+#root {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.app,
+.shell,
+.pageBody,
+.dashboardPage,
+.featureCard,
+.panelCard,
+.card,
+.resultPanel,
+.historyPageCard {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Last-resort protection: no visible page should create horizontal scroll. */
+html,
+body,
+#root,
+.app,
+.shell,
+.pageBody {
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+@supports not (overflow-x: clip) {
+  html,
+  body,
+  #root,
+  .app,
+  .shell,
+  .pageBody {
+    overflow-x: hidden;
+  }
+}
+
+/* =======================================================
+   PDF REPORT EXPORT FIX
+   Important:
+   Do NOT use opacity: 0, visibility: hidden, or contain:size here.
+   html2canvas needs the element to be visible in the DOM.
+   We move it far off-screen instead.
+   ======================================================= */
+
+.pdfReportRoot {
+  position: fixed !important;
+  left: -99999px !important;
+  top: 0 !important;
+
+  width: 1120px !important;
+  max-width: 1120px !important;
+  height: auto !important;
+
+  opacity: 1 !important;
+  visibility: visible !important;
+
+  pointer-events: none !important;
+  z-index: -1 !important;
+
+  transform: none !important;
+  overflow: visible !important;
+}
+
+/* =======================================================
+   TABLET
+   Stack main grids earlier so cards do not feel squeezed.
+   ======================================================= */
+
+@media (max-width: 1080px) {
+  .shell {
+    width: min(100%, calc(100vw - 28px)) !important;
+  }
+
+  .dashboardGrid,
+  .dashboardGridWide,
+  .homeSummaryGrid,
+  .homeInsightGrid,
+  .lightingTheme .dashboardGrid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .sideColumn,
+  .mainColumn {
+    min-width: 0;
+  }
+}
+
+/* =======================================================
+   MOBILE
+   Phone layout:
+   - no side scrolling
+   - header becomes stacked
+   - all calculator cards become one column
+   - result panels become compact
+   ======================================================= */
+
+@media (max-width: 760px) {
+  /* Phone canvas */
+  html,
+  body,
+  #root {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden !important;
+  }
+
+  .app {
+    width: 100%;
+    max-width: 100%;
+    min-height: 100vh;
+    padding: 0 10px 24px !important;
+    overflow-x: hidden !important;
+  }
+
+  .shell {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    overflow-x: hidden !important;
+  }
+
+  /* Header becomes 3 clear rows:
+     1) logo
+     2) theme/language/account
+     3) navigation */
+  .shellHeader {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 12px !important;
+
+    width: 100% !important;
+    max-width: 100% !important;
+
+    padding: 16px 0 12px !important;
+    margin-bottom: 14px !important;
+
+    overflow: hidden !important;
+  }
+
+  .brandButton {
+    order: 1;
+    width: 100% !important;
+    min-width: 0 !important;
+    padding: 0 58px 0 0 !important;
+  }
+
+  [dir="rtl"] .brandButton {
+    padding: 0 0 0 58px !important;
+  }
+
+  .brand {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 12px !important;
+    min-width: 0 !important;
+    width: 100% !important;
+  }
+
+  .brandText {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 22px !important;
+  }
+
+  .logo {
+    width: 44px !important;
+    height: 44px !important;
+    flex: 0 0 44px !important;
+  }
+
+  .logoMain {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .logoImg {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    display: block;
+  }
+
+  .headerActions {
+    order: 2;
+    position: relative !important;
+
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10px !important;
+
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+
+    padding: 0 !important;
+  }
+
+  .headerSegment {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+
+    display: flex !important;
+    justify-content: center !important;
+    gap: 6px !important;
+
+    padding: 6px !important;
+    border-radius: 18px !important;
+  }
+
+  .themeMini,
+  .langMini {
+    flex: 1 1 0 !important;
+    min-width: 0 !important;
+    padding: 10px 8px !important;
+    font-size: 14px !important;
+    border-radius: 14px !important;
+  }
+
+  /* Account button is placed on the logo row so it does not squeeze toggles. */
+  .accountButton {
+    position: absolute !important;
+    top: -58px !important;
+    left: 0 !important;
+
+    width: 46px !important;
+    height: 46px !important;
+    border-radius: 16px !important;
+  }
+
+  [dir="ltr"] .accountButton {
+    left: auto !important;
+    right: 0 !important;
+  }
+
+  .navigation-tabs {
+    order: 3;
+
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+
+    padding: 10px !important;
+    overflow: hidden !important;
+    border-radius: 24px !important;
+  }
+
+  .tab-btn {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+
+    min-height: 48px !important;
+    padding: 12px 8px !important;
+
+    font-size: 14px !important;
+    line-height: 1.15 !important;
+
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+
+    border-radius: 18px !important;
+  }
+
+  .tab-btn:first-child {
+    grid-column: 1 / -1;
+  }
+
+  /* Main content: every card/grid gets one safe column. */
+  .pageBody,
+  .dashboardPage,
+  .featureBody,
+  .dashboardGrid,
+  .dashboardGridWide,
+  .homeSummaryGrid,
+  .homeInsightGrid,
+  .lightingTheme .dashboardGrid,
+  .mainColumn,
+  .sideColumn,
+  .historyPageList,
+  .roomTable,
+  .lightingRoomsList,
+  .tipsList,
+  .detailList,
+  .controls {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    overflow-x: hidden !important;
+  }
+
+  .dashboardGrid,
+  .dashboardGridWide,
+  .homeSummaryGrid,
+  .homeInsightGrid,
+  .lightingTheme .dashboardGrid,
+  .compareNumbers,
+  .miniStats,
+  .miniStats.twoCols,
+  .lightingRoomGrid,
+  .lightingRoomMeters,
+  .advGrid,
+  .historyPageList,
+  .roomManagerBar {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+
+  /* Reduce card height and empty space on mobile. */
+  .panelCard,
+  .featureCard,
+  .card,
+  .resultPanel,
+  .historyPageCard,
+  .detailPanel,
+  .tipsCard,
+  .lightingRoomCard,
+  .dashboardBreakdown,
+  .roomOverviewCard,
+  .optimizedPanel,
+  .issuePanel {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    min-height: auto !important;
+
+    padding: 18px 14px !important;
+    border-radius: 22px !important;
+
+    overflow: hidden !important;
+  }
+
+  .homeHero {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+
+    padding: 20px 16px !important;
+    min-height: auto !important;
+  }
+
+  .homeTitle {
+    font-size: clamp(1.8rem, 9vw, 2.55rem) !important;
+    line-height: 1.1 !important;
+    letter-spacing: -0.04em !important;
+  }
+
+  .homeSubtitle {
+    font-size: 14px !important;
+    line-height: 1.55 !important;
+    margin-top: 8px !important;
+  }
+
+  .heroActionsStack {
+    min-width: 0 !important;
+    width: 100% !important;
+    justify-items: stretch !important;
+  }
+
+  .efficiencyBadge {
+    min-height: 92px !important;
+    padding: 12px !important;
+  }
+
+  .efficiencyBadge strong {
+    margin-top: 0 !important;
+    font-size: 28px !important;
+  }
+
+  /* Calculator headers */
+  .featureHeader.between,
+  .featureCard .featureHeader.between {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    align-items: stretch !important;
+    gap: 14px !important;
+    margin-bottom: 12px !important;
+  }
+
+  .featureTitleWrap {
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .featureTitle {
+    font-size: clamp(1.45rem, 6vw, 1.9rem) !important;
+    line-height: 1.2 !important;
+  }
+
+  .featureCard .chips,
+  .chips,
+  .seasonChips {
+    width: 100% !important;
+    margin: 0 !important;
+
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10px !important;
+  }
+
+  .featureCard .chip,
+  .featureCard .chip.active,
+  .chip,
+  .chip.active {
+    width: 100% !important;
+    min-height: 46px !important;
+
+    padding: 10px 12px !important;
+    text-align: center !important;
+    justify-content: center !important;
+  }
+
+  .fieldNote.dashboardNote,
+  .featureCard > .dashboardNote {
+    margin: 6px 0 18px !important;
+    line-height: 1.5 !important;
+  }
+
+  /* Room manager and weather controls */
+  .roomManagerBar {
+    margin: 14px 0 12px !important;
+  }
+
+  .weatherBox,
+  .tipRow,
+  .historyHead,
+  .historyToolbar,
+  .historyItemTop,
+  .sliderFieldTop,
+  .detailRow,
+  .breakdownTop,
+  .meterHeader {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 10px !important;
+  }
+
+  .weatherControls {
+    min-width: 0 !important;
+    width: 100% !important;
+
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+
+  .weatherControls .stackInput {
+    min-width: 0 !important;
+    width: 100% !important;
+  }
+
+  .stepper,
+  .inputRow {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 12px !important;
+    padding: 14px !important;
+  }
+
+  .stepperLeft,
+  .stepperRight,
+  .stepperRightFull {
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .stepperRight {
+    justify-content: space-between !important;
+  }
+
+  .valueBox,
+  .valueBoxInput,
+  .stackInput,
+  .input,
+  select.input,
+  .authInput {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .sliderField {
+    padding: 16px 0 8px !important;
+  }
+
+  .sliderFieldValue {
+    min-width: 0 !important;
+    text-align: start !important;
+    font-size: 2rem !important;
+  }
+
+  /* Result cards: compact instead of huge empty blocks. */
+  .resultPanel,
+  .homeTotalPanel {
+    min-height: auto !important;
+    padding-block: 22px !important;
+  }
+
+  .resultValue {
+    font-size: clamp(2.7rem, 14vw, 3.6rem) !important;
+    line-height: 1 !important;
+  }
+
+  .miniStats,
+  .miniStats.twoCols {
+    margin-top: 18px !important;
+  }
+
+  .meter {
+    min-height: auto !important;
+    padding: 14px 16px !important;
+    border-radius: 18px !important;
+  }
+
+  .meterVal {
+    margin-top: 8px !important;
+    font-size: 1.45rem !important;
+  }
+
+  .detailRow {
+    padding: 14px !important;
+  }
+
+  .saveButton,
+  .ctaButton,
+  .snapshotButton,
+  .ghostButton,
+  .pdfSecondaryButton {
+    width: 100% !important;
+    min-height: 46px !important;
+  }
+
+  /* Lighting cards */
+  .lightingRoomHeader {
+    display: grid !important;
+    grid-template-columns: 1fr 46px !important;
+    gap: 10px !important;
+    align-items: center !important;
+  }
+
+  .lightingRemoveBtn {
+    width: 46px !important;
+    height: 46px !important;
+  }
+
+  .switchLine,
+  .toggleRow {
+    align-items: flex-start !important;
+    line-height: 1.35 !important;
+  }
+
+  /* History */
+  .historySearch {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  .historyFilters {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    width: 100% !important;
+    gap: 10px !important;
+  }
+
+  .historyFilters .chip:first-child {
+    grid-column: 1 / -1;
+  }
+
+  .historyItem {
+    min-height: auto !important;
+    padding: 16px !important;
+  }
+
+  .historyActions {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10px !important;
+  }
+
+  .historyActions .btn,
+  .historyActions .btnGhost,
+  .historyActions .btnDanger {
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  /* Room table becomes readable stacked cards. */
+  .roomTableHead {
+    display: none !important;
+  }
+
+  .roomTableRow {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+    padding: 14px !important;
+  }
+}
+
+/* =======================================================
+   DESKTOP HERO LAYOUT
+   ======================================================= */
+
+@media (min-width: 761px) {
+  .homeHero {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+  }
+
+  .heroActionsStack {
+    display: grid;
+    grid-template-columns: auto auto;
+    align-items: center;
+    gap: 22px;
+  }
+
+  .snapshotButton {
+    order: 1;
+    width: auto;
+    min-width: 210px;
+    height: 50px;
+    padding: 0 24px;
+  }
+
+  .efficiencyBadge {
+    order: 2;
+  }
+}
+
+/* =======================================================
+   LOGO
+   ======================================================= */
+
+.brandButton {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logoMain {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logoImg {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  display: block;
+}

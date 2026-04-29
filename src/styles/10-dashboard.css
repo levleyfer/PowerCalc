@@ -1,0 +1,534 @@
+/* ===================================================================
+   HOME DASHBOARD
+   Page-specific styles only
+   =================================================================== */
+
+.dashboardPage {
+  padding-top: 12px;
+}
+
+.dashboardPage > * + * {
+  margin-top: 26px;
+}
+
+/* ===================================================================
+   HERO
+   =================================================================== */
+
+.homeHero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 26px;
+  padding: 32px;
+  margin-bottom: 22px;
+  overflow: hidden;
+}
+
+.homeHero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      circle at 82% 32%,
+      rgba(122, 95, 255, 0.2),
+      transparent 34%
+    ),
+    radial-gradient(
+      circle at 15% 70%,
+      rgba(45, 212, 191, 0.12),
+      transparent 34%
+    );
+}
+
+.homeHero > * {
+  position: relative;
+  z-index: 1;
+}
+
+.eyebrow {
+  color: #9eb2ff;
+  font-size: 13px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  margin-bottom: 10px;
+}
+
+.homeTitle {
+  margin: 0;
+  font-size: clamp(30px, 4vw, 48px);
+  line-height: 1.05;
+  letter-spacing: -0.055em;
+}
+
+.homeSubtitle {
+  max-width: 720px;
+  color: var(--muted);
+  line-height: 1.65;
+  margin: 12px 0 0;
+}
+
+.heroActionsStack {
+  display: grid;
+  gap: 14px;
+  justify-items: end;
+  align-content: center;
+}
+
+.snapshotButton {
+  min-width: 180px;
+  border: 1px solid rgba(126, 151, 255, 0.34);
+  border-radius: 18px;
+  padding: 13px 18px;
+  color: #ffffff;
+  font-weight: 900;
+  cursor: pointer;
+  background: linear-gradient(
+    135deg,
+    rgba(111, 99, 255, 0.95),
+    rgba(30, 188, 214, 0.76)
+  );
+  box-shadow: 0 16px 34px rgba(66, 94, 255, 0.24);
+  transition:
+    transform 0.18s ease,
+    filter 0.18s ease,
+    opacity 0.18s ease;
+}
+
+.snapshotButton:hover:not(:disabled) {
+  transform: translateY(-2px);
+  filter: brightness(1.08);
+}
+
+.snapshotButton:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.efficiencyBadge {
+  min-width: 150px;
+  min-height: 126px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  border-radius: 28px;
+  background:
+    radial-gradient(
+      circle at 40% 20%,
+      rgba(91, 211, 139, 0.26),
+      rgba(122, 92, 255, 0.16)
+    ),
+    rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(147, 168, 216, 0.18);
+}
+
+.efficiencyBadge span {
+  color: var(--muted);
+  font-weight: 800;
+}
+
+.efficiencyBadge strong {
+  display: block;
+  font-size: 36px;
+  margin-top: -26px;
+}
+
+/* ===================================================================
+   SUMMARY GRID
+   =================================================================== */
+
+.homeSummaryGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.9fr);
+  gap: 22px;
+  margin-bottom: 22px;
+  align-items: start;
+}
+
+.homeTotalPanel {
+  min-height: unset;
+}
+
+.dashboardBreakdown {
+  height: fit-content;
+  padding: 26px;
+}
+
+.breakdownList {
+  display: grid;
+  gap: 20px;
+  margin-top: 22px;
+}
+
+.breakdownRow {
+  display: grid;
+  gap: 9px;
+}
+
+.breakdownTop {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.breakdownBar {
+  height: 11px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(147, 168, 216, 0.14);
+}
+
+.breakdownBar span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #7a5fff, #59d38b);
+  animation: growBar 0.8s ease both;
+}
+
+.breakdownRow small {
+  color: var(--muted);
+}
+
+/* ===================================================================
+   INSIGHTS
+   =================================================================== */
+
+.homeInsightGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.15fr);
+  gap: 22px;
+  margin-top: 22px;
+  margin-bottom: 22px;
+  align-items: start;
+}
+
+.homeInsightGrid > * {
+  height: auto;
+  min-height: 0;
+}
+
+.optimizedPanel,
+.issuePanel {
+  padding: 26px;
+  height: fit-content;
+}
+
+.compareNumbers {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 16px;
+}
+
+.compareNumbers .meter {
+  min-width: 0;
+  min-height: 92px;
+}
+
+.issuePanel {
+  display: grid;
+  gap: 14px;
+}
+
+.issueBlock {
+  min-width: 0;
+  overflow: hidden;
+  padding: 16px;
+  border: 1px solid rgba(147, 168, 216, 0.12);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.issueBlock strong,
+.issueBlock p {
+  display: block;
+  margin: 6px 0 0;
+  color: #eef3ff;
+  line-height: 1.55;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+.issueKicker {
+  display: inline-flex;
+  color: #9eb4ff;
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.bestActionBlock {
+  border-color: rgba(46, 213, 146, 0.22);
+  background: linear-gradient(
+    180deg,
+    rgba(46, 213, 146, 0.08),
+    rgba(255, 255, 255, 0.025)
+  );
+}
+
+/* ===================================================================
+   ROOMS
+   =================================================================== */
+
+.dashboardGridWide {
+  grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.75fr);
+  align-items: start;
+}
+
+.roomOverviewCard {
+  padding: 26px;
+}
+
+.roomTable {
+  display: grid;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.roomTableHead,
+.roomTableRow {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr 1fr;
+  align-items: center;
+  gap: 12px;
+}
+
+.roomTableHead {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0 14px;
+}
+
+.roomTableRow {
+  padding: 16px 14px;
+  border-radius: 18px;
+  background: rgba(147, 168, 216, 0.07);
+  border: 1px solid rgba(147, 168, 216, 0.1);
+}
+
+.roomTableRow:nth-child(even) {
+  background: rgba(255, 255, 255, 0.035);
+}
+
+/* ===================================================================
+   SHARED DASHBOARD CONTROLS
+   =================================================================== */
+
+.dashboardTipRow {
+  align-items: center;
+}
+
+.tipButton {
+  border: 0;
+  cursor: pointer;
+}
+
+.roomManagerBar {
+  display: grid;
+  grid-template-columns: minmax(180px, 1fr) minmax(180px, 1fr) auto auto;
+  gap: 12px;
+  align-items: end;
+  margin: 18px 0 10px;
+}
+
+.dashboardNote {
+  margin-bottom: 18px;
+}
+
+.toggleRow,
+.switchLine {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.switchLine {
+  color: #dfe6ff;
+  font-weight: 800;
+}
+
+.switchLine input {
+  width: 18px;
+  height: 18px;
+  accent-color: #7a5fff;
+}
+
+.lightingEnableLine {
+  margin: 12px 0 4px;
+}
+
+.dangerGhost {
+  color: #ffb4b4;
+}
+
+.suggestionsMenu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  z-index: 20;
+  border-radius: 16px;
+  overflow: hidden;
+  background: rgba(13, 21, 48, 0.98);
+  border: 1px solid rgba(147, 168, 216, 0.14);
+}
+
+.suggestionsMenu button {
+  width: 100%;
+  text-align: start;
+  padding: 14px 16px;
+  background: transparent;
+  color: #eef2ff;
+  border: 0;
+  border-bottom: 1px solid rgba(147, 168, 216, 0.08);
+  cursor: pointer;
+}
+
+.suggestionsMenu button:hover {
+  background: rgba(122, 92, 255, 0.18);
+}
+
+/* ===================================================================
+   LIGHT MODE
+   =================================================================== */
+
+.app.ui-light .homeSubtitle,
+.app.ui-light .breakdownRow small,
+.app.ui-light .roomTableHead,
+.app.ui-light .eyebrow {
+  color: #52607f;
+}
+
+.app.ui-light .roomTableRow,
+.app.ui-light .breakdownBar {
+  background: rgba(43, 75, 138, 0.07);
+}
+
+.app.ui-light .issueBlock {
+  background: rgba(255, 255, 255, 0.72);
+  border-color: rgba(43, 57, 98, 0.1);
+}
+
+.app.ui-light .issueBlock strong,
+.app.ui-light .issueBlock p {
+  color: #1f2a44;
+}
+
+.app.ui-light .issueKicker {
+  color: #4f46e5;
+}
+
+/* ===================================================================
+   RESPONSIVE
+   =================================================================== */
+
+@media (max-width: 1080px) {
+  .homeSummaryGrid,
+  .homeInsightGrid,
+  .dashboardGridWide {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 900px) {
+  .homeHero,
+  .roomManagerBar {
+    grid-template-columns: 1fr;
+  }
+
+  .homeHero {
+    display: grid;
+  }
+
+  .heroActionsStack {
+    justify-items: stretch;
+  }
+
+  .compareNumbers {
+    grid-template-columns: 1fr;
+  }
+
+  .roomTableHead {
+    display: none;
+  }
+
+  .roomTableRow {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .homeHero,
+  .dashboardBreakdown,
+  .optimizedPanel,
+  .issuePanel,
+  .roomOverviewCard {
+    padding: 20px;
+  }
+
+  .homeTitle {
+    font-size: 2rem;
+    line-height: 1.15;
+  }
+
+  .efficiencyBadge {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .compareNumbers {
+    gap: 10px;
+  }
+}
+
+.homeSummaryGrid {
+  grid-template-columns: minmax(0, 0.88fr) minmax(360px, 0.92fr);
+  gap: 28px;
+}
+
+.homeTotalPanel {
+  max-width: 760px;
+}
+
+.homeSummaryGrid {
+  grid-template-columns: minmax(0, 0.75fr) minmax(380px, 0.95fr);
+}
+
+/* Dashboard: make total card shorter in width and height */
+.homeSummaryGrid {
+  grid-template-columns: minmax(0, 0.78fr) minmax(380px, 0.95fr) !important;
+  align-items: start !important;
+  gap: 28px !important;
+}
+
+.homeTotalPanel {
+  max-width: 760px !important;
+  height: fit-content !important;
+  min-height: 0 !important;
+  padding: 24px !important;
+}
+
+/* מקצר את הרווחים בתוך הכרטיס */
+.homeTotalPanel .miniStats {
+  margin-top: 18px !important;
+  gap: 12px !important;
+}
+
+.homeTotalPanel .meter {
+  min-height: 20px !important;
+  padding: 14px 18px !important;
+}
+
+.homeTotalPanel .meterVal {
+  margin-top: 10px !important;
+  font-size: 1.8rem !important;
+}

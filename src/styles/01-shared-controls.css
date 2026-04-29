@@ -1,0 +1,36 @@
+/* ===================================================================
+   SHARED FORM CONTROLS
+   Used by AC, Boiler and Lighting
+   =================================================================== */
+
+.valueBox {
+  outline: none;
+}
+
+.ui-dark .valueBox:focus {
+  border-color: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.18);
+}
+
+.ui-light .valueBox:focus {
+  border-color: rgba(15, 23, 42, 0.35);
+  box-shadow: 0 0 0 4px rgba(15, 23, 42, 0.08);
+}
+
+.stepper.advSplit {
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.stepper.advSplit .stepperLeft {
+  width: 100%;
+}
+
+.stepper.advSplit .stepperRight {
+  width: 100%;
+  justify-content: flex-start;
+}
+
+.stepper.advSplit .valueBox {
+  min-width: 120px;
+}

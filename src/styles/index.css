@@ -1,0 +1,26 @@
+/* ===================================================================
+   Main style entry point
+   Import this once from src/main.jsx.
+
+   Structure:
+   00-13 = original layout/components/responsive rules.
+   24    = final Eco design skin. It replaces the old experimental
+           redesign files, so V8-V13 style patches are not needed anymore.
+   =================================================================== */
+
+@import "./00-base.css";
+@import "./01-shared-controls.css";
+@import "./02-calculator-layout.css";
+@import "./03-app-core.css";
+@import "./04-history.css";
+@import "./05-auth.css";
+@import "./06-responsive-basic.css";
+@import "./07-themes.css";
+@import "./08-pdf.css";
+@import "./09-lighting.css";
+@import "./10-dashboard.css";
+@import "./11-rtl.css";
+@import "./12-ui-polish.css";
+@import "./13-mobile-responsive.css";
+
+@import "./15-eco-final-system.css";

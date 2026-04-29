@@ -1,0 +1,31 @@
+export const common = {
+  en: {
+    langName: "English",
+    appName: "Smart Cost Calculators",
+    themeDark: "🌙 Dark",
+    themeLight: "☀️ Light",
+    languageEnglish: "1. English",
+    languageHebrew: "2. עברית",
+    tabAc: "❄️ AC",
+    tabLighting: "💡 Lighting",
+    tabBoiler: "🚿 Boiler",
+    tabHistory: "🕘 History",
+    account: "👤 Account",
+    helloUser: "Hi,",
+  },
+
+  he: {
+    langName: "עברית",
+    appName: "מחשבוני עלות חכמים",
+    themeDark: "🌙 כהה",
+    themeLight: "☀️ בהיר",
+    languageEnglish: "1. English",
+    languageHebrew: "2. עברית",
+    tabAc: "❄️ מזגן",
+    tabLighting: "💡 תאורה",
+    tabBoiler: "🚿 דוד",
+    tabHistory: "🕘 היסטוריה",
+    account: "👤 חשבון",
+    helloUser: "היי,",
+  },
+};

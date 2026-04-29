@@ -1,0 +1,128 @@
+/* ===================================================================
+   PDF REPORT
+   =================================================================== */
+
+.pdfSecondaryButton {
+  width: 100%;
+  margin-top: 12px;
+}
+
+.pdfReportRoot {
+  position: absolute;
+  left: -10000px;
+  top: 0;
+  width: 1120px;
+  background: #f4f5f9;
+  color: #4f4f5d;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.pdfReportHeader {
+  padding: 28px 0;
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.pdfReportHeader.purple {
+  background: linear-gradient(135deg, #6252f5, #4f46e5);
+}
+
+.pdfReportHeader.gold {
+  background: linear-gradient(135deg, #f0b90b, #f97316);
+}
+
+.pdfReportHeader.orange {
+  background: linear-gradient(135deg, #fb923c, #ef4444);
+}
+
+.pdfReportHeaderInner,
+.pdfReportBody {
+  width: 900px;
+  margin: 0 auto;
+}
+
+.pdfReportBody {
+  padding: 48px 0 64px;
+}
+
+.pdfReportTitle {
+  margin: 0;
+  color: #4f46e5;
+  font-size: 38px;
+  font-weight: 500;
+}
+
+.pdfReportDate {
+  margin: 16px 0 48px;
+  color: #7b7b87;
+  font-size: 18px;
+}
+
+.pdfReportSection {
+  margin-top: 44px;
+}
+
+.pdfCard {
+  background: #eceef3;
+  border-radius: 22px;
+  padding: 28px;
+}
+
+.pdfReportSectionTitle {
+  margin: 0 0 18px;
+  color: #4f46e5;
+  font-size: 26px;
+  font-weight: 500;
+}
+
+.pdfReportSectionTitle.slim {
+  background: #eceef3;
+  border-radius: 999px;
+  padding: 2px 28px;
+  display: inline-block;
+  min-width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 18px;
+}
+
+.pdfReportTable {
+  width: 100%;
+  border-collapse: collapse;
+  overflow: hidden;
+  border-radius: 14px;
+}
+
+.pdfReportTable thead th {
+  text-align: left;
+  padding: 12px 14px;
+  background: linear-gradient(135deg, #6252f5, #4f46e5);
+  color: #fff;
+  font-size: 18px;
+}
+
+.pdfReportTable tbody td {
+  padding: 12px 14px;
+  font-size: 18px;
+}
+
+.pdfReportTable tbody tr:nth-child(odd) td,
+.pdfDetailRow:nth-child(odd) {
+  background: #eef0f5;
+}
+
+.pdfDetailTable {
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.pdfDetailRow {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  padding: 10px 14px;
+  font-size: 18px;
+}
+
+.pdfDetailLabel {
+  font-weight: 700;
+}

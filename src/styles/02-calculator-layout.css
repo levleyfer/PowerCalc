@@ -1,0 +1,24 @@
+/* ===================================================================
+   CALCULATOR PAGE LAYOUT
+   Shared by Lighting and Boiler
+   =================================================================== */
+
+.lightingRoot .sectionTitle,
+.boilerRoot .sectionTitle {
+  margin-bottom: 10px;
+}
+
+.lightingGrid {
+  align-items: start;
+}
+
+.lightingSticky {
+  position: sticky;
+  top: 18px;
+}
+
+@media (max-width: 1080px) {
+  .lightingSticky {
+    position: static;
+  }
+}
