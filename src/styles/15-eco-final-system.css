@@ -1364,32 +1364,7 @@ input[type="checkbox"] {
   background: url("/icons/eco-cg.jpg") center / cover no-repeat fixed !important;
 }
 
-/* Disable pseudo wallpaper in light mode */
-.app.ui-light::before {
-  display: none !important;
-}
-
 /* Dark mode wallpaper */
 .app.ui-dark {
-  background:
-    linear-gradient(rgba(4, 17, 15, 0.22), rgba(4, 17, 15, 0.46)),
-    url("/icons/eco-bg.jpg") center / 100% auto no-repeat fixed !important;
-  background-color: #04110f !important;
-}
-
-/* Dark mode wallpaper overlay */
-.app.ui-dark::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-
-  background-image: url("/icons/eco-bg.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  opacity: 0.42;
-  filter: saturate(1.25) contrast(1.08);
+  background: url("/icons/eco-bg.jpg") center / 100% auto no-repeat fixed !important;
 }
