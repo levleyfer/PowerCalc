@@ -31,6 +31,11 @@ export function BoilerResultPanel({ result, language }) {
           name={isHebrew ? "אנרגיה יומית" : "Daily Energy"}
           value={`${round2(result.dailyEnergy)} kWh`}
         />
+
+        <Meter
+          name={isHebrew ? "שעות ביום" : "Hours / Day"}
+          value={`${round2(result.hoursPerDay || 1)} h`}
+        />
       </div>
     </section>
   );

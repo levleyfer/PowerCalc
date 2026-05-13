@@ -14,6 +14,7 @@ export const defaultBoilerState = {
   targetTemp: 60,
   inletTemp: 15,
   dailyUsage: 150,
+  hoursPerDay: 1,
   insulation: "medium",
 };
 
@@ -63,10 +64,13 @@ export function calculateBoilerResult(boilerState, electricityPrice = 0.55) {
         : 1;
 
   // Water heating formula converted to kWh
-  const dailyEnergy =
+  const baseEnergy =
     ((Number(safeState.dailyUsage) * 4.186 * delta) / 3600) *
     insulationFactor *
     boilerFactor;
+
+  // מכפיל לפי שעות שימוש בפועל
+  const dailyEnergy = baseEnergy * (safeState.hoursPerDay || 1);
 
   const dailyCost = dailyEnergy * safePrice;
   const monthlyCost = dailyCost * 30;

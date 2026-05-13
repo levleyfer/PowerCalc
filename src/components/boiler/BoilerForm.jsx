@@ -1,10 +1,6 @@
 import { Stepper } from "../shared/Fields";
 import { clamp } from "./useBoilerCalculator";
 
-// Boiler calculator form.
-// Handles boiler settings, water temperatures,
-// daily usage, insulation, electricity price,
-// and optional weather/location helpers.
 export function BoilerForm({
   state,
   setState,
@@ -15,7 +11,6 @@ export function BoilerForm({
 }) {
   const isHebrew = language === "he";
 
-  // Optional weather/location helpers from boiler hook
   const {
     cityQuery,
     setCityQuery,
@@ -37,7 +32,6 @@ export function BoilerForm({
       </div>
 
       <div className="featureBody">
-        {/* Boiler type affects efficiency and energy usage */}
         <label className="stackField">
           <span className="stackLabel">
             {isHebrew ? "סוג דוד" : "Boiler Type"}
@@ -53,18 +47,15 @@ export function BoilerForm({
             <option value="electric">
               {isHebrew ? "דוד חשמל" : "Electric Boiler"}
             </option>
-
             <option value="solar">
               {isHebrew ? "דוד שמש" : "Solar Boiler"}
             </option>
-
             <option value="heat-pump">
               {isHebrew ? "משאבת חום" : "Heat Pump"}
             </option>
           </select>
         </label>
 
-        {/* Tank water capacity */}
         <Stepper
           icon="/icons/quantity.png"
           name={isHebrew ? "נפח דוד" : "Boiler Capacity"}
@@ -76,7 +67,6 @@ export function BoilerForm({
           onChange={(v) => setState((p) => ({ ...p, capacity: v }))}
         />
 
-        {/* Target hot water temperature */}
         <Stepper
           icon="/icons/temperature.png"
           name={isHebrew ? "טמפרטורת יעד" : "Target Water Temperature"}
@@ -88,7 +78,6 @@ export function BoilerForm({
           onChange={(v) => setState((p) => ({ ...p, targetTemp: v }))}
         />
 
-        {/* Incoming cold water temperature */}
         <Stepper
           icon="/icons/temperature-low.png"
           name={isHebrew ? "טמפרטורת מים נכנסים" : "Inlet Water Temperature"}
@@ -100,11 +89,10 @@ export function BoilerForm({
           onChange={(v) => setState((p) => ({ ...p, inletTemp: v }))}
         />
 
-        {/* Weather/location tools can estimate inlet water temperature */}
         <div className="weatherBox">
           <div>
             <div className="stackLabel">
-              {isHebrew ? " טמפרטורת מים משוערת" : "Estimated Inlet Temp"}
+              {isHebrew ? "טמפרטורת מים משוערת" : "Estimated Inlet Temp"}
             </div>
           </div>
 
@@ -122,14 +110,12 @@ export function BoilerForm({
                 onBlur={() => setTimeout(() => setIsCityFocused?.(false), 150)}
               />
 
-              {/* Autocomplete loading state */}
               {loadingSuggestions && cityQuery?.trim().length >= 2 && (
                 <div className="fieldNote" style={{ marginTop: 8 }}>
                   {isHebrew ? "מחפש ערים..." : "Searching cities..."}
                 </div>
               )}
 
-              {/* City suggestions */}
               {isCityFocused && suggestions?.length > 0 && (
                 <div className="suggestionsMenu">
                   {suggestions.map((place) => (
@@ -145,7 +131,6 @@ export function BoilerForm({
               )}
             </div>
 
-            {/* Use browser location */}
             <button
               className="ghostButton"
               type="button"
@@ -161,7 +146,6 @@ export function BoilerForm({
                   : "Use my location"}
             </button>
 
-            {/* Use city weather */}
             <button
               className="ghostButton"
               type="button"
@@ -179,7 +163,6 @@ export function BoilerForm({
           </div>
         </div>
 
-        {/* Estimated daily hot water usage */}
         <Stepper
           icon="/icons/daily.png"
           name={isHebrew ? "שימוש יומי במים חמים" : "Daily Hot Water Usage"}
@@ -191,7 +174,17 @@ export function BoilerForm({
           onChange={(v) => setState((p) => ({ ...p, dailyUsage: v }))}
         />
 
-        {/* Heat retention / insulation quality */}
+        <Stepper
+          icon="/icons/clock.png"
+          name={isHebrew ? "שעות דוד ביום" : "Boiler Hours Per Day"}
+          value={state.hoursPerDay || 1}
+          unit="h"
+          step={0.5}
+          min={0.5}
+          max={8}
+          onChange={(v) => setState((p) => ({ ...p, hoursPerDay: v }))}
+        />
+
         <label className="stackField">
           <span className="stackLabel">
             {isHebrew ? "איכות בידוד" : "Insulation Quality"}
@@ -210,7 +203,6 @@ export function BoilerForm({
           </select>
         </label>
 
-        {/* Electricity price affects final cost */}
         <label className="stackField">
           <span className="stackLabel">
             {isHebrew ? "מחיר חשמל (₪ / קוט״ש)" : "Electricity Price (₪/kWh)"}
