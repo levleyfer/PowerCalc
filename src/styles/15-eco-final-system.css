@@ -1351,20 +1351,75 @@ input[type="checkbox"] {
 
 /* =========================================================
    21. FINAL LIGHT / DARK BACKGROUND FIXES
+   Desktop = wallpaper
+   Mobile = clean gradient, no image
    ========================================================= */
 
-/* Add Room special */
-.app.ui-light .ghostButton:not(.dangerGhost) {
-  color: #2f7d59 !important;
-  font-weight: 700 !important;
+html,
+body,
+#root {
+  min-height: 100%;
+  margin: 0;
 }
 
-/* Light mode wallpaper */
+.app {
+  min-height: 100dvh !important;
+  overflow-x: hidden !important;
+}
+
+/* Light mode desktop wallpaper */
 .app.ui-light {
-  background: url("/icons/eco-cg.jpg") center / cover no-repeat fixed !important;
+  background:
+    linear-gradient(rgba(243, 252, 255, 0.25), rgba(200, 239, 250, 0.45)),
+    url("/icons/eco-cg.jpg") center center / cover no-repeat fixed !important;
 }
 
-/* Dark mode wallpaper */
+/* Dark mode desktop wallpaper */
 .app.ui-dark {
-  background: url("/icons/eco-bg.jpg") center / 100% auto no-repeat fixed !important;
+  background:
+    linear-gradient(rgba(4, 17, 15, 0.58), rgba(4, 17, 15, 0.78)),
+    url("/icons/eco-bg.jpg") center center / cover no-repeat fixed !important;
+}
+
+/* Mobile: no wallpaper images */
+@media (max-width: 760px) {
+  .app {
+    min-height: 100dvh !important;
+    padding: 0 0 28px !important;
+  }
+
+  .shell {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .app.ui-light {
+    background:
+      radial-gradient(
+        circle at 20% 10%,
+        rgba(72, 198, 238, 0.18),
+        transparent 42%
+      ),
+      radial-gradient(
+        circle at 85% 25%,
+        rgba(100, 223, 131, 0.16),
+        transparent 45%
+      ),
+      linear-gradient(180deg, #f3fcff 0%, #c8effa 55%, #eefbf3 100%) !important;
+  }
+
+  .app.ui-dark {
+    background:
+      radial-gradient(
+        circle at 20% 10%,
+        rgba(100, 223, 131, 0.08),
+        transparent 40%
+      ),
+      radial-gradient(
+        circle at 80% 30%,
+        rgba(72, 198, 238, 0.08),
+        transparent 45%
+      ),
+      linear-gradient(180deg, #04110f 0%, #061b18 60%, #081c24 100%) !important;
+  }
 }
