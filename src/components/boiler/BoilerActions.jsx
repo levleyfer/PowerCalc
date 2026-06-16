@@ -23,9 +23,7 @@ export function BoilerActions({
           ? t("saving")
           : saveState === "saved"
             ? t("saved")
-            : language === "he"
-              ? "שמור חישוב"
-              : "Save Calculation"}
+            : t("saveCalculation")}
       </button>
 
       {/* Exports the current boiler result to PDF */}
@@ -34,7 +32,7 @@ export function BoilerActions({
         type="button"
         onClick={onExportPdf}
       >
-        {language === "he" ? "ייצוא PDF" : "Export PDF"}
+        {t("exportPdf")}
       </button>
 
       {/* Save/login helper message */}

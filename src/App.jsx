@@ -240,7 +240,7 @@ function AppShell({
               className={`tab-btn ${activeTab === "dashboard" ? "active" : ""}`}
               onClick={() => setActiveTab("dashboard")}
             >
-              {language === "he" ? "דשבורד" : "Home"}
+              {t("tabDashboard")}
             </button>
 
             <button

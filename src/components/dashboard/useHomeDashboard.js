@@ -240,8 +240,8 @@ export function useHomeDashboard({
       await saveCalculation({
         userId: user.uid,
         type: "home",
-        title: "home",
-        summary: "home-summary",
+        title: `Home Snapshot · ${rooms.length} room${rooms.length !== 1 ? "s" : ""}`,
+        summary: `Monthly: ${safeTotalMonthly.toFixed(0)} ₪ · Possible saving: ${possibleSaving.toFixed(0)} ₪`,
 
         inputs: cleanPayload,
 

@@ -1,11 +1,12 @@
 // Formats a number as Israeli shekel currency.
+// Shows decimals for small values so daily lighting costs (e.g. 0.08 ₪) don't round to "0 ₪".
 // Invalid numbers return a clean dash instead of breaking the UI.
-export function formatCurrency(n, language = "en") {
-  return Number.isFinite(+n)
-    ? `${Math.round(Number(n))} ₪`
-    : language === "he"
-      ? "—"
-      : "—";
+export function formatCurrency(n) {
+  if (!Number.isFinite(+n)) return "—";
+  const num = Number(n);
+  if (num < 1) return `${num.toFixed(2)} ₪`;
+  if (num < 10) return `${num.toFixed(1)} ₪`;
+  return `${Math.round(num)} ₪`;
 }
 
 // Round to 1 decimal place

@@ -110,7 +110,18 @@ export function AuthModal({ open, onClose }) {
 
               <div className="authEmail">{user.email}</div>
 
-              <button className="ctaButton" type="button" onClick={logout}>
+              <button
+                className="ctaButton"
+                type="button"
+                onClick={async () => {
+                  try {
+                    await logout();
+                    onClose();
+                  } catch {
+                    // logout error is already set in AuthContext
+                  }
+                }}
+              >
                 {t("logout")}
               </button>
             </div>

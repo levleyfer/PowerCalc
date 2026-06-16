@@ -26,9 +26,7 @@ export function AcActions({
           ? t("saving")
           : saveState === "saved"
             ? t("saved")
-            : language === "he"
-              ? "שמור חישוב"
-              : "Save Calculation"}
+            : t("saveCalculation")}
       </button>
 
       {/* Export PDF button */}
@@ -37,7 +35,7 @@ export function AcActions({
         type="button"
         onClick={onExportPdf}
       >
-        {language === "he" ? "ייצוא PDF" : "Export PDF"}
+        {t("exportPdf")}
       </button>
 
       <div className="saveHint">

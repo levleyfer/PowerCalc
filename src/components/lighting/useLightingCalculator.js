@@ -134,7 +134,7 @@ export function useLightingCalculator({
     defaultHomeRooms[0].id,
   );
 
-  const [localPrice, setLocalPrice] = useState(0.15);
+  const [localPrice, setLocalPrice] = useState(0.55);
 
   const [saveState, setSaveState] = useState("idle");
 
@@ -346,8 +346,8 @@ export function useLightingCalculator({
       await saveCalculation({
         userId: user.uid,
         type: "lighting",
-        title: "lighting",
-        summary: "lighting-summary",
+        title: `Lighting · ${homeRooms.length} room${homeRooms.length !== 1 ? "s" : ""}`,
+        summary: `Daily: ${computed.dailyCost.toFixed(2)} ₪ · Monthly: ${computed.monthlyCost.toFixed(0)} ₪`,
 
         inputs: {
           rooms: homeRooms.map((room) => ({

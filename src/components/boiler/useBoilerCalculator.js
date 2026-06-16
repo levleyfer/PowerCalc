@@ -160,7 +160,7 @@ export function useBoilerCalculator({
       ...prev,
       ...restInputs,
     }));
-  }, [loadRequest?.ts, loadRequest?.item]);
+  }, [loadRequest?.ts]); // ts is the unique trigger; item is read inside the effect
 
   // Debounced city autocomplete
   useEffect(() => {
@@ -417,8 +417,8 @@ export function useBoilerCalculator({
       await saveCalculation({
         userId: user.uid,
         type: "boiler",
-        title: "boiler",
-        summary: "boiler-summary",
+        title: `Boiler · ${getBoilerLabel(state.boilerType)} · ${state.capacity}L`,
+        summary: `Daily: ${result.dailyCost.toFixed(2)} ₪ · Monthly: ${result.monthlyCost.toFixed(0)} ₪`,
         inputs: {
           ...state,
           electricityPrice: price,

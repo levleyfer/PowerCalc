@@ -8,10 +8,7 @@ export function LightingActions({
   onSave,
   onExportPdf,
   t,
-  language,
 }) {
-  const isHebrew = language === "he";
-
   return (
     <>
       {/* Save button is disabled when user/Firebase is missing or while saving */}
@@ -25,9 +22,7 @@ export function LightingActions({
           ? t("saving")
           : saveState === "saved"
             ? t("saved")
-            : isHebrew
-              ? "שמור חישוב"
-              : "Save Calculation"}
+            : t("saveCalculation")}
       </button>
 
       {/* Exports the current lighting result to PDF */}
@@ -36,7 +31,7 @@ export function LightingActions({
         type="button"
         onClick={onExportPdf}
       >
-        {isHebrew ? "ייצוא PDF" : "Export PDF"}
+        {t("exportPdf")}
       </button>
 
       {/* Save/login helper message */}

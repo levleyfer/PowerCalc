@@ -81,12 +81,15 @@ export function useAcCalculator({
   const roomAc = selectedRoom?.ac || fallbackRooms[0].ac;
 
   // Final data object used by the AC calculation.
-  // Combines selected room AC settings + shared settings + electricity price.
-  const data = {
-    ...roomAc,
-    ...sharedAc,
-    price,
-  };
+  // Memoized so that result/recommendations useMemos actually cache between renders.
+  // Without this, the plain object literal was always a new reference, making
+  // both downstream memos recompute on every render regardless of actual changes.
+  // roomAc and sharedAc come from React state, so they are stable references
+  // between renders — this memoization is correct and effective.
+  const data = useMemo(
+    () => ({ ...roomAc, ...sharedAc, price }),
+    [roomAc, sharedAc, price],
+  );
 
   // Updates only the AC settings of the selected room.
   const patchSelectedRoomAc = (patch) => {
@@ -438,19 +441,22 @@ export function useAcCalculator({
 
     setSaveState("saving");
 
+    const roomName = selectedRoom?.name || "Room";
+    const seasonLabel = season === "winter" ? "Winter" : "Summer";
+
     try {
       await saveCalculation({
         userId: user.uid,
         type: "ac",
-        title: "ac",
-        summary: "ac-summary",
+        title: `AC · ${roomName} · ${seasonLabel}`,
+        summary: `Daily: ${result.dailyCost.toFixed(2)} ₪ · Monthly: ${result.monthlyCost.toFixed(0)} ₪`,
         inputs: {
           ...roomAc,
           ...sharedAc,
           electricityPrice: price,
           season,
           roomId: selectedRoom?.id,
-          roomName: selectedRoom?.name,
+          roomName,
         },
         outputs: result,
       });

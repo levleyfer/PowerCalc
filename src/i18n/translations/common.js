@@ -6,12 +6,14 @@ export const common = {
     themeLight: "☀️ Light",
     languageEnglish: "1. English",
     languageHebrew: "2. עברית",
+    tabDashboard: "🏠 Home",
     tabAc: "❄️ AC",
     tabLighting: "💡 Lighting",
     tabBoiler: "🚿 Boiler",
     tabHistory: "🕘 History",
     account: "👤 Account",
     helloUser: "Hi,",
+    exportPdf: "Export PDF",
   },
 
   he: {
@@ -21,11 +23,13 @@ export const common = {
     themeLight: "☀️ בהיר",
     languageEnglish: "1. English",
     languageHebrew: "2. עברית",
+    tabDashboard: "🏠 בית",
     tabAc: "❄️ מזגן",
     tabLighting: "💡 תאורה",
     tabBoiler: "🚿 דוד",
     tabHistory: "🕘 היסטוריה",
     account: "👤 חשבון",
     helloUser: "היי,",
+    exportPdf: "ייצוא PDF",
   },
 };
