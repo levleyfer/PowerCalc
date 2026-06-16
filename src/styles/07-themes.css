@@ -69,7 +69,16 @@ select.input option:hover,
 .app.ui-light .tabMini,
 .app.ui-light .ghostButton {
   background: rgba(255, 255, 255, 0.72);
-  border-color: rgba(111, 136, 199, 0.18);
+  border-color: rgba(111, 136, 199, 0.28);
+  /* base ghostButton rule defaults to near-white text for dark mode;
+     override it here so ghost buttons are legible on light backgrounds */
+  color: #3d4875;
+}
+
+/* "Remove" / danger ghost button needs visible red in light mode,
+   not the light-pink (#ffb4b4) that only works on dark backgrounds */
+.app.ui-light .dangerGhost {
+  color: #c0392b;
 }
 
 .app.ui-light .tab-btn.active,
